@@ -1,0 +1,21 @@
+{
+  "name": "krishna-glass-redesign",
+  "version": "1.0.0",
+  "type": "module",
+  "description": "Professional redesign for Krishna Glass House Aluminium & PVC Works",
+  "scripts": {
+    "dev": "wrangler pages dev .",
+    "build": "node build.js",
+    "deploy": "wrangler pages deploy dist"
+  },
+  "dependencies": {
+    "clean-css": "^5.0.0",
+    "fs-extra": "^11.0.0",
+    "html-minifier-terser": "^7.0.0",
+    "sharp": "^0.33.0",
+    "terser": "^5.0.0"
+  },
+  "devDependencies": {
+    "wrangler": "^4.77.0"
+  }
+}
