@@ -1,16 +1,15 @@
 User-agent: *
 Allow: /
 
-# Disallow admin/private paths
+# Disallow sensitive files
 Disallow: /details.txt
+Disallow: /*.ps1$
+Disallow: /*.json$
 
-# Crawl delay (in seconds)
-Crawl-delay: 5
+# Crawl delay
+Crawl-delay: 3
 
-# Sitemap
-Sitemap: https://krishnaglass.explyra.me/sitemap.xml
-
-# AI / LLM crawlers
+# AI / LLM Crawlers — Allow full access for brand visibility
 User-agent: GPTBot
 Allow: /
 
@@ -22,3 +21,15 @@ Allow: /
 
 User-agent: anthropic-ai
 Allow: /
+
+User-agent: PerplexityBot
+Allow: /
+
+User-agent: ClaudeBot
+Allow: /
+
+User-agent: Googlebot-Image
+Allow: /images/
+
+# Sitemap
+Sitemap: https://krishnaglass.explyra.me/sitemap.xml

@@ -233,6 +233,17 @@ document.addEventListener('DOMContentLoaded', () => {
     }
   });
 
+  /* ---------- 12. FAQ Accordion ---------- */
+  document.querySelectorAll('.faq-q').forEach(btn => {
+    btn.addEventListener('click', () => {
+      const item = btn.closest('.faq-item');
+      const wasOpen = item.classList.contains('open');
+      // Close all siblings
+      item.parentElement.querySelectorAll('.faq-item.open').forEach(el => el.classList.remove('open'));
+      if (!wasOpen) item.classList.add('open');
+    });
+  });
+
 });
 
 /* Fade-in keyframes for gallery filter */

@@ -1,30 +1,74 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9"
         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+        xmlns:image="http://www.google.com/schemas/sitemap-image/1.1"
         xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9
         http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd">
 
+  <!-- HOME PAGE -->
   <url>
     <loc>https://krishnaglass.explyra.me/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-1.png</image:loc>
+      <image:title>Krishna Glass House — Best Glass Shop in Janakpuri</image:title>
+      <image:caption>Custom glass facade by Krishna Glass House, Janakpuri, West Delhi</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-2.png</image:loc>
+      <image:title>Aluminium Windows by Krishna Glass House</image:title>
+      <image:caption>Premium aluminium and uPVC windows by Krishna Glass House, Pankha Road</image:caption>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-3.png</image:loc>
+      <image:title>Glass Railing Installation Delhi — Krishna Glass House</image:title>
+      <image:caption>Frameless toughened glass railing installation by Krishna Glass House, Janakpuri</image:caption>
+    </image:image>
   </url>
 
+  <!-- SERVICES PAGE -->
   <url>
     <loc>https://krishnaglass.explyra.me/services.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-1.png</image:loc>
+      <image:title>Toughened Glass Manufacturers Delhi — Krishna Glass House</image:title>
+    </image:image>
   </url>
 
+  <!-- GALLERY PAGE -->
   <url>
     <loc>https://krishnaglass.explyra.me/gallery.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/gallery-1.png</image:loc>
+      <image:title>Krishna Glass House Shop — Interior Hub Janakpuri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/gallery-2.png</image:loc>
+      <image:title>Aluminium Windows — Krishna Glass House Delhi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/gallery-4.png</image:loc>
+      <image:title>Glass Office Partition — Krishna Glass House West Delhi</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/gallery-7.png</image:loc>
+      <image:title>Designer LED Mirror — Krishna Glass House Janakpuri</image:title>
+    </image:image>
+    <image:image>
+      <image:loc>https://krishnaglass.explyra.me/images/gallery-8.png</image:loc>
+      <image:title>PVC Wall Panels & Wallpaper — Mohan Nagar Delhi</image:title>
+    </image:image>
   </url>
 
+  <!-- CONTACT PAGE -->
   <url>
     <loc>https://krishnaglass.explyra.me/contact.html</loc>
     <lastmod>2026-03-26</lastmod>
@@ -32,6 +76,7 @@
     <priority>0.85</priority>
   </url>
 
+  <!-- ABOUT PAGE -->
   <url>
     <loc>https://krishnaglass.explyra.me/about.html</loc>
     <lastmod>2026-03-26</lastmod>
