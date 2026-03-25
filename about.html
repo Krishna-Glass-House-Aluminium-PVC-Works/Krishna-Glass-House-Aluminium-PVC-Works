@@ -1,0 +1,319 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>About Us — Krishna Glass House | Saksham Bhasin | Janakpuri, New Delhi</title>
+  <meta name="description" content="Learn about Krishna Glass House — founded in December 2021 by Saksham Bhasin. A premium interior hub in Janakpuri, New Delhi specialising in glass, aluminium, PVC, wallpapers & LED mirrors. 5★ rated on Google.">
+  <meta name="keywords" content="Krishna Glass House about, Saksham Bhasin, Pankaj Bhasin, Glass shop Janakpuri, Interior hub West Delhi, Glass works Delhi NCR">
+  <link rel="canonical" href="https://krishnaglass.explyra.me/about.html">
+  <meta name="geo.region" content="IN-DL">
+  <meta name="geo.placename" content="Janakpuri, New Delhi">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>◆</text></svg>">
+  <style>
+    .about-story { padding: 96px 0; }
+    .about-story-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 80px; align-items: center; }
+    .about-story-image { border-radius: var(--border-radius); overflow: hidden; position: relative; }
+    .about-story-image img { width: 100%; aspect-ratio: 4/3; object-fit: cover; display: block; }
+    .about-owner-badge {
+      position: absolute; bottom: 24px; left: 24px;
+      background: rgba(255,255,255,.95); border-radius: 12px; padding: 16px 20px;
+      backdrop-filter: blur(12px); box-shadow: var(--shadow-md);
+    }
+    .about-owner-badge strong { display: block; font-size: 15px; color: var(--color-gray-900); }
+    .about-owner-badge span { font-size: 12px; color: var(--color-gray-500); text-transform: uppercase; letter-spacing: .04em; }
+    .about-content h2 { font-size: 2.6rem; margin-bottom: 20px; }
+    .about-content p { color: var(--color-gray-600); line-height: 1.8; margin-bottom: 18px; }
+    .about-highlight { background: var(--color-gray-50); border-left: 4px solid var(--color-accent); border-radius: 0 12px 12px 0; padding: 20px 24px; margin: 24px 0; }
+    .about-highlight blockquote { font-size: 1.1rem; color: var(--color-gray-700); font-style: italic; margin: 0; line-height: 1.7; }
+    .team-section { background: var(--color-gray-50); padding: 96px 0; }
+    .team-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 32px; margin-top: 60px; }
+    .team-card { background: var(--color-white); border-radius: var(--border-radius); padding: 36px 28px; text-align: center; box-shadow: var(--shadow-sm); transition: transform var(--transition), box-shadow var(--transition); }
+    .team-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-md); }
+    .team-avatar { width: 80px; height: 80px; border-radius: 50%; background: var(--color-accent); display: flex; align-items: center; justify-content: center; margin: 0 auto 20px; font-size: 2rem; font-weight: 700; color: white; font-family: var(--font-display); }
+    .team-card h3 { font-size: 1.15rem; margin-bottom: 6px; }
+    .team-card .team-role { font-size: 13px; color: var(--color-accent); font-weight: 600; text-transform: uppercase; letter-spacing: .05em; margin-bottom: 12px; }
+    .team-card p { font-size: 14px; color: var(--color-gray-500); line-height: 1.7; }
+    .team-card .team-links { display: flex; justify-content: center; gap: 12px; margin-top: 16px; }
+    .team-card .team-link { font-size: 13px; color: var(--color-accent); text-decoration: none; border-bottom: 1px solid transparent; transition: border-color var(--transition); }
+    .team-card .team-link:hover { border-color: var(--color-accent); }
+    .platforms-section { padding: 96px 0; }
+    .platforms-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 24px; margin-top: 60px; }
+    .platform-card { background: var(--color-gray-50); border-radius: 16px; padding: 28px 24px; display: flex; align-items: center; gap: 16px; text-decoration: none; color: inherit; transition: transform var(--transition), box-shadow var(--transition); border: 1px solid var(--color-gray-100); }
+    .platform-card:hover { transform: translateY(-4px); box-shadow: var(--shadow-sm); }
+    .platform-card .platform-icon { width: 48px; height: 48px; border-radius: 12px; display: flex; align-items: center; justify-content: center; flex-shrink: 0; font-size: 22px; }
+    .platform-card .platform-text strong { display: block; font-size: 14px; color: var(--color-gray-900); margin-bottom: 2px; }
+    .platform-card .platform-text span { font-size: 12px; color: var(--color-gray-500); }
+    .gstin-block { background: var(--color-white); border: 1px solid var(--color-gray-100); border-radius: 16px; padding: 32px; margin-top: 48px; display: flex; align-items: center; gap: 24px; flex-wrap: wrap; }
+    .gstin-block .gstin-label { font-size: 12px; text-transform: uppercase; letter-spacing: .08em; color: var(--color-gray-500); margin-bottom: 4px; }
+    .gstin-block .gstin-value { font-size: 1.4rem; font-family: var(--font-display); font-weight: 700; color: var(--color-gray-900); letter-spacing: .04em; }
+    @media (max-width: 900px) {
+      .about-story-grid { grid-template-columns: 1fr; gap: 40px; }
+      .team-grid { grid-template-columns: 1fr 1fr; }
+      .platforms-grid { grid-template-columns: 1fr 1fr; }
+    }
+    @media (max-width: 600px) {
+      .team-grid { grid-template-columns: 1fr; }
+      .platforms-grid { grid-template-columns: 1fr; }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="images/kgh.png" alt="Krishna Glass House Logo"></div>
+        <div class="logo-text"><span class="brand-name">KRISHNA GLASS HOUSE</span><span class="brand-tagline">Aluminium & PVC Works</span></div>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-item-services">
+          <a href="services.html" class="nav-link nav-link-services">Services <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-header"><h3>Our Services</h3><a href="services.html">View All</a></div>
+            <div class="mega-menu-grid">
+              <a href="services.html#glass-facades" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div><div class="mega-item-text"><h4>Custom Glass Facades</h4><p>Structural glass exteriors</p></div></a>
+              <a href="services.html#aluminium" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><div class="mega-item-text"><h4>Aluminium & uPVC</h4><p>Windows & doors</p></div></a>
+              <a href="services.html#pvc" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="mega-item-text"><h4>PVC & Wallpapers</h4><p>Imported finishes</p></div></a>
+              <a href="services.html#led-mirrors" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="12" r="4"/></svg></div><div class="mega-item-text"><h4>LED Mirrors</h4><p>Touch-sensor mirrors</p></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link active">About</a>
+        <a href="gallery.html" class="nav-link">Portfolio</a>
+        
+        <a href="contact.html" class="nav-link">Contact&nbsp;Us</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary header-cta">Get Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+    <nav class="mobile-drawer" id="mobile-drawer" aria-label="Mobile navigation">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="gallery.html" class="mobile-nav-link">Portfolio</a>
+    <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+    <a href="tel:+918700162623" class="btn btn-primary">Call +91 87001 62623</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>About Us</span>
+      </div>
+      <span class="section-label">Our Story</span>
+      <h1 class="section-title">About Krishna Glass House</h1>
+      <p class="section-subtitle">A West Delhi success story built on quality craftsmanship, honest pricing, and a genuine passion for transforming spaces since December 2021.</p>
+    </div>
+  </section>
+
+  <!-- Our Story -->
+  <section class="about-story">
+    <div class="container">
+      <div class="about-story-grid">
+        <div class="about-story-image reveal">
+          <img src="images/gallery-1.png" alt="Krishna Glass House shop — Janakpuri, New Delhi">
+          <div class="about-owner-badge">
+            <strong>Saksham Bhasin</strong>
+            <span>Founder & Owner</span>
+          </div>
+        </div>
+        <div class="about-content reveal">
+          <span class="section-label">Who We Are</span>
+          <h2>Precision Meets Passion</h2>
+          <p>
+            Krishna Glass House was founded in <strong>December 2021</strong> by <strong>Saksham Bhasin</strong> with a simple mission: bring premium-quality glass, aluminium, and interior solutions to West Delhi at honest prices.
+          </p>
+          <p>
+            Located at <strong>Shop No. 2, Mohan Nagar, Pankha Road (opposite D-Block, Janakpuri), New Delhi — 110046</strong>, we have quickly grown into one of the most trusted interior hubs in the area, serving hundreds of happy customers across Delhi NCR.
+          </p>
+          <div class="about-highlight">
+            <blockquote>"Every project we take on is a reflection of our commitment to quality. We don't just install glass — we transform spaces."<br><br>— Saksham Bhasin, Founder</blockquote>
+          </div>
+          <p>
+            From frameless glass railings and imported wallpapers to custom LED mirrors and uPVC windows — we offer 8 service categories with a single goal: making your space look extraordinary.
+          </p>
+          <div style="display:flex;gap:12px;flex-wrap:wrap;margin-top:8px">
+            <a href="contact.html" class="btn btn-primary">Get A Free Quote</a>
+            <a href="https://g.page/r/CUW1QB530ymnEAE/review" target="_blank" rel="noopener" class="btn btn-outline">⭐ See Our Reviews</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Stats -->
+  <section class="stats-bar">
+    <div class="container">
+      <div class="stats-grid">
+        <div class="stat-item reveal"><div class="stat-number" data-count="500" data-suffix="+">0</div><div class="stat-label">Projects Delivered</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-count="5" data-suffix="★">0</div><div class="stat-label">Google Rating</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-count="19" data-suffix="+">0</div><div class="stat-label">JustDial Reviews</div></div>
+        <div class="stat-item reveal"><div class="stat-number" data-count="8" data-suffix="">0</div><div class="stat-label">Service Categories</div></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Team -->
+  <section class="team-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">The Team</span>
+        <h2 class="section-title">People Behind Krishna Glass House</h2>
+        <p class="section-subtitle">A small, dedicated team with deep expertise in glass, aluminium and interior solutions.</p>
+      </div>
+      <div class="team-grid">
+        <div class="team-card reveal">
+          <div class="team-avatar">S</div>
+          <h3>Saksham Bhasin</h3>
+          <div class="team-role">Founder & Primary Owner</div>
+          <p>Passionate about premium glass and interior solutions. Manages day-to-day operations, client relationships, and project execution.</p>
+          <div class="team-links">
+            <a href="tel:+918700162623" class="team-link">+91 87001 62623</a>
+            <a href="https://sakshambhasin.netlify.app/" target="_blank" rel="noopener" class="team-link">Portfolio →</a>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar" style="background:var(--color-gold)">P</div>
+          <h3>Pankaj Bhasin</h3>
+          <div class="team-role">Co-Owner / Associate</div>
+          <p>Oversees operations, procurement and quality control. Ensures every installation meets our high standards of precision and finish.</p>
+          <div class="team-links">
+            <a href="tel:+919999551275" class="team-link">+91 99995 51275</a>
+            <a href="https://pankajbhasin.netlify.app/" target="_blank" rel="noopener" class="team-link">Portfolio →</a>
+          </div>
+        </div>
+        <div class="team-card reveal">
+          <div class="team-avatar" style="background:#6366f1">M</div>
+          <h3>Mitanshu Bhasin</h3>
+          <div class="team-role">Website Designer & Developer</div>
+          <p>Responsible for the digital presence of Krishna Glass House — website design, SEO, and online brand strategy.</p>
+          <div class="team-links">
+            <a href="tel:+918076108584" class="team-link">+91 80761 08584</a>
+            <a href="https://mitanshu.explyra.me/" target="_blank" rel="noopener" class="team-link">Portfolio →</a>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Online Presence -->
+  <section class="platforms-section">
+    <div class="container">
+      <div class="text-center reveal">
+        <span class="section-label">Find Us Online</span>
+        <h2 class="section-title">Our Online Presence</h2>
+        <p class="section-subtitle">Reviews, videos, photos and updates — find us on all major platforms.</p>
+      </div>
+      <div class="platforms-grid reveal">
+        <a href="https://www.instagram.com/krishnaglass09/" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#fce7f3"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#e91e8c" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></div>
+          <div class="platform-text"><strong>Instagram</strong><span>@krishnaglass09</span></div>
+        </a>
+        <a href="https://www.facebook.com/krishnaglass09" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#e8f0fe"><svg width="28" height="28" viewBox="0 0 24 24" fill="#1877f2"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></div>
+          <div class="platform-text"><strong>Facebook</strong><span>krishnaglass09</span></div>
+        </a>
+        <a href="https://www.youtube.com/@krishnaglasshouse.netfly" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#fee2e2"><svg width="28" height="28" viewBox="0 0 24 24" fill="#ff0000"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon fill="#fff" points="9.75,15.02 15.5,11.75 9.75,8.48"/></svg></div>
+          <div class="platform-text"><strong>YouTube</strong><span>@krishnaglasshouse.netfly</span></div>
+        </a>
+        <a href="https://g.page/r/CUW1QB530ymnEAE/review" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#fef3c7"><svg width="28" height="28" viewBox="0 0 24 24" fill="#fbbc05"><path d="M12 2l3.09 6.26L22 9.27l-5 4.87 1.18 6.88L12 17.77l-6.18 3.25L7 14.14 2 9.27l6.91-1.01L12 2z"/></svg></div>
+          <div class="platform-text"><strong>Google Reviews</strong><span>5.0★ · 15+ Reviews</span></div>
+        </a>
+        <a href="https://jsdl.in/DT-23LJF8HYEIO" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#ecfdf5"><svg width="28" height="28" viewBox="0 0 24 24" fill="none" stroke="#059669" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M20 6L9 17l-5-5"/></svg></div>
+          <div class="platform-text"><strong>JustDial</strong><span>5.0★ · 19+ Reviews</span></div>
+        </a>
+        <a href="https://www.houzz.in/user/krishnaglasshouse" target="_blank" rel="noopener" class="platform-card">
+          <div class="platform-icon" style="background:#fff7ed"><svg width="28" height="28" viewBox="0 0 24 24" fill="#7dbc60"><path d="M22 9L12 2 2 9v13h7v-7h6v7h7V9z"/></svg></div>
+          <div class="platform-text"><strong>Houzz</strong><span>Interior Design Portfolio</span></div>
+        </a>
+      </div>
+
+      <!-- Business Details Block -->
+      <div class="gstin-block reveal">
+        <div>
+          <div class="gstin-label">GSTIN (GST Registration)</div>
+          <div class="gstin-value">07DPZPB3958D1ZL</div>
+        </div>
+        <div style="width:1px;height:48px;background:var(--color-gray-100)"></div>
+        <div>
+          <div class="gstin-label">Business Type</div>
+          <div class="gstin-value" style="font-size:1rem;font-weight:600">Interior Hub · Mid to Premium</div>
+        </div>
+        <div style="width:1px;height:48px;background:var(--color-gray-100)"></div>
+        <div>
+          <div class="gstin-label">Founded</div>
+          <div class="gstin-value" style="font-size:1rem;font-weight:600">December 2021</div>
+        </div>
+        <div style="width:1px;height:48px;background:var(--color-gray-100)"></div>
+        <div>
+          <div class="gstin-label">Service Area</div>
+          <div class="gstin-value" style="font-size:1rem;font-weight:600">Delhi NCR & West Delhi</div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <section class="cta-banner">
+    <div class="container text-center">
+      <h2>Ready to Work With Us?</h2>
+      <p>Visit our shop or call directly. Free site consultation available.</p>
+      <div style="display:flex;gap:16px;justify-content:center;flex-wrap:wrap;position:relative">
+        <a href="contact.html" class="btn btn-light">Contact Us <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a>
+        <a href="https://maps.app.goo.gl/MxcHDSm7aD1qwjck9" target="_blank" rel="noopener" class="btn btn-light">Get Directions</a>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="images/kgh.png" alt="Krishna Glass House Logo"></div>
+            <div class="logo-text"><span class="brand-name">KRISHNA GLASS HOUSE</span><span class="brand-tagline">Aluminium & PVC Works</span></div>
+          </a>
+          <p>Premium Interior Hub in Janakpuri, New Delhi since 2021.</p>
+          <div class="footer-socials">
+            <a href="https://www.facebook.com/krishnaglass09" target="_blank" rel="noopener" class="footer-social" aria-label="Facebook"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M18 2h-3a5 5 0 0 0-5 5v3H7v4h3v8h4v-8h3l1-4h-4V7a1 1 0 0 1 1-1h3z"/></svg></a>
+            <a href="https://www.instagram.com/krishnaglass09/" target="_blank" rel="noopener" class="footer-social" aria-label="Instagram"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><rect x="2" y="2" width="20" height="20" rx="5"/><circle cx="12" cy="12" r="5"/><line x1="17.5" y1="6.5" x2="17.51" y2="6.5"/></svg></a>
+            <a href="https://www.youtube.com/@krishnaglasshouse.netfly" target="_blank" rel="noopener" class="footer-social" aria-label="YouTube"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M22.54 6.42a2.78 2.78 0 0 0-1.94-2C18.88 4 12 4 12 4s-6.88 0-8.6.46a2.78 2.78 0 0 0-1.94 2A29 29 0 0 0 1 11.75a29 29 0 0 0 .46 5.33A2.78 2.78 0 0 0 3.4 19.1c1.72.46 8.6.46 8.6.46s6.88 0 8.6-.46a2.78 2.78 0 0 0 1.94-2 29 29 0 0 0 .46-5.25 29 29 0 0 0-.46-5.43z"/><polygon fill="#fff" points="9.75,15.02 15.5,11.75 9.75,8.48"/></svg></a>
+            <a href="https://wa.me/918700162623" target="_blank" rel="noopener" class="footer-social" aria-label="WhatsApp"><svg viewBox="0 0 24 24" fill="currentColor"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.87 9.87 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.86 9.86 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.89-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413z"/></svg></a>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a><a href="services.html">Services</a><a href="gallery.html">Portfolio</a><a href="about.html">About</a><a href="contact.html">Contact</a>
+          <a href="https://g.page/r/CUW1QB530ymnEAE/review" target="_blank" rel="noopener">⭐ Leave a Review</a>
+        </div>
+        <div class="footer-col">
+          <h4>Our Services</h4>
+          <a href="services.html#glass-facades">Glass Facades</a><a href="services.html#aluminium">Aluminium & uPVC</a><a href="services.html#pvc">PVC & Wallpapers</a><a href="services.html#railings">Glass Railings</a><a href="services.html#commercial">Office Partitions</a><a href="services.html#led-mirrors">LED Mirrors</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact Us</h4>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg><span>Shop No. 2, Mohan Nagar, Pankha Road, Janakpuri, New Delhi — 110046</span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg><span><a href="tel:+918700162623" style="color:rgba(255,255,255,.5)">+91 87001 62623</a></span></div>
+          <div class="footer-contact-item"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg><span>Mon–Sun: 10 AM – 8 PM<br><strong style="color:rgba(255,255,255,.4)">Closed Wednesdays</strong></span></div>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Krishna Glass House. GSTIN: 07DPZPB3958D1ZL</span>
+        <span>Designed by <a href="https://mitanshu.explyra.me/" target="_blank" rel="noopener">Mitanshu Bhasin</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>

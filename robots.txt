@@ -1,0 +1,24 @@
+User-agent: *
+Allow: /
+
+# Disallow admin/private paths
+Disallow: /details.txt
+
+# Crawl delay (in seconds)
+Crawl-delay: 5
+
+# Sitemap
+Sitemap: https://krishnaglass.explyra.me/sitemap.xml
+
+# AI / LLM crawlers
+User-agent: GPTBot
+Allow: /
+
+User-agent: CCBot
+Allow: /
+
+User-agent: Google-Extended
+Allow: /
+
+User-agent: anthropic-ai
+Allow: /

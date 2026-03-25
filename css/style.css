@@ -246,12 +246,18 @@ h1,h2,h3,h4,h5,h6{
   text-decoration:none;
 }
 .logo-icon{
-  width:46px;height:46px;
+  width:52px;height:52px;
   display:flex;align-items:center;justify-content:center;
   position:relative;
+  flex-shrink:0;
 }
 .logo-icon svg{
-  width:46px;height:46px;
+  width:52px;height:52px;
+}
+.logo-icon img{
+  width:52px;height:52px;
+  object-fit:contain;
+  display:block;
 }
 .logo-text{
   display:flex;
