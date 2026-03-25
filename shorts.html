@@ -1,0 +1,263 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Video Gallery — YouTube Shorts | Krishna Glass House Janakpuri</title>
+  <meta name="description" content="Watch architectural glass, aluminium, and PVC installation videos. Our project stories through YouTube Shorts. Krishna Glass House, Janakpuri, Delhi.">
+  <meta name="keywords" content="Krishna Glass House videos, YouTube Shorts glass works, aluminium project videos, PVC panel installation video, glass railing shorts">
+  <link rel="canonical" href="https://krishnaglass.explyra.me/shorts.html">
+  <link rel="stylesheet" href="css/style.css">
+  <link rel="icon" href="/48.png">
+  <style>
+    .shorts-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+      gap: 24px;
+      margin-top: 40px;
+    }
+    .short-card {
+      background: var(--color-bg-light);
+      border-radius: 16px;
+      overflow: hidden;
+      border: 1px solid rgba(255,255,255,0.05);
+      transition: transform 0.3s ease, box-shadow 0.3s ease;
+      position: relative;
+    }
+    .short-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0,0,0,0.3);
+      border-color: var(--color-accent);
+    }
+    .short-video-container {
+      position: relative;
+      width: 100%;
+      padding-top: 177.77%; /* 9:16 Aspect Ratio */
+      background: #000;
+    }
+    .short-video-container iframe {
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      border: 0;
+    }
+    .short-info {
+      padding: 16px;
+    }
+    .short-title {
+      font-size: 1.1rem;
+      font-weight: 600;
+      margin-bottom: 4px;
+      color: var(--color-text);
+      display: block;
+    }
+    .short-meta {
+      font-size: 0.85rem;
+      color: var(--color-text-muted);
+    }
+    .shorts-header {
+      text-align: center;
+      margin-bottom: 30px;
+    }
+    .youtube-btn-large {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      background: #ff0000;
+      color: #fff;
+      padding: 12px 24px;
+      border-radius: 50px;
+      font-weight: 600;
+      margin-top: 20px;
+      transition: transform 0.3s ease;
+    }
+    .youtube-btn-large:hover {
+      transform: scale(1.05);
+      background: #cc0000;
+    }
+    @media (max-width: 768px) {
+      .shorts-grid {
+        grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+        gap: 16px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header class="site-header" id="site-header">
+    <div class="container header-inner">
+      <a href="index.html" class="logo">
+        <div class="logo-icon"><img src="images/kgh.png" alt="Krishna Glass House Logo"></div>
+        <div class="logo-text">
+          <span class="brand-name">KRISHNA GLASS HOUSE</span>
+          <span class="brand-tagline">Aluminium & PVC Works</span>
+        </div>
+      </a>
+      <nav class="main-nav" id="main-nav">
+        <a href="index.html" class="nav-link">Home</a>
+        <div class="nav-item-services">
+          <a href="services.html" class="nav-link nav-link-services">Services <svg class="chevron" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="6 9 12 15 18 9"/></svg></a>
+          <div class="mega-menu">
+            <div class="mega-menu-header"><h3>Our Services</h3><a href="services.html">View All <svg viewBox="0 0 24 24" width="14" height="14" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M5 12h14M12 5l7 7-7 7"/></svg></a></div>
+            <div class="mega-menu-grid">
+              <a href="services/glass-facades.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="18" height="18" rx="2"/><line x1="3" y1="12" x2="21" y2="12"/><line x1="12" y1="3" x2="12" y2="21"/></svg></div><div class="mega-item-text"><h4>Glass Facades</h4><p>Exteriors</p></div></a>
+              <a href="services/aluminium-upvc.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="2" y="4" width="20" height="16" rx="2"/><line x1="12" y1="4" x2="12" y2="20"/></svg></div><div class="mega-item-text"><h4>Aluminium</h4><p>Windows & Doors</p></div></a>
+              <a href="services/pvc-wallpapers.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="3" y="3" width="7" height="7"/><rect x="14" y="3" width="7" height="7"/><rect x="14" y="14" width="7" height="7"/><rect x="3" y="14" width="7" height="7"/></svg></div><div class="mega-item-text"><h4>PVC & Wallpapers</h4><p>Designer walls</p></div></a>
+              <a href="services/glass-railings.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><line x1="2" y1="18" x2="22" y2="18"/><line x1="4" y1="10" x2="4" y2="18"/><line x1="12" y1="10" x2="12" y2="18"/><line x1="20" y1="10" x2="20" y2="18"/><line x1="2" y1="10" x2="22" y2="10"/></svg></div><div class="mega-item-text"><h4>Glass Railings</h4><p>Frameless balustrades</p></div></a>
+              <a href="services/office-partitions.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="4" y="2" width="16" height="20" rx="2"/><line x1="9" y1="22" x2="9" y2="2"/><line x1="15" y1="22" x2="15" y2="2"/></svg></div><div class="mega-item-text"><h4>Office Partitions</h4><p>Glass dividers</p></div></a>
+              <a href="services/led-mirrors.html" class="mega-item"><div class="mega-item-icon"><svg viewBox="0 0 24 24"><rect x="5" y="2" width="14" height="20" rx="2"/><circle cx="12" cy="12" r="4"/></svg></div><div class="mega-item-text"><h4>LED Mirrors</h4><p>Touch-sensor mirrors</p></div></a>
+            </div>
+          </div>
+        </div>
+        <a href="about.html" class="nav-link">About</a>
+        <a href="gallery.html" class="nav-link">Portfolio</a>
+        <a href="shorts.html" class="nav-link active">Video Gallery</a>
+        <a href="contact.html" class="nav-link">Contact&nbsp;Us</a>
+      </nav>
+      <a href="contact.html" class="btn btn-primary header-cta">Get Quote</a>
+      <button class="hamburger" id="hamburger" aria-label="Toggle mobile menu"><span></span><span></span><span></span></button>
+    </div>
+  </header>
+
+  <div class="mobile-drawer-overlay" id="drawer-overlay"></div>
+  <nav class="mobile-drawer" id="mobile-drawer">
+    <a href="index.html" class="mobile-nav-link">Home</a>
+    <a href="services.html" class="mobile-nav-link">Services</a>
+    <a href="about.html" class="mobile-nav-link">About</a>
+    <a href="gallery.html" class="mobile-nav-link">Portfolio</a>
+    <a href="shorts.html" class="mobile-nav-link">Video Gallery</a>
+    <a href="contact.html" class="mobile-nav-link">Contact Us</a>
+    <a href="tel:+918700162623" class="btn btn-primary">Call +91 87001 62623</a>
+  </nav>
+
+  <section class="page-hero">
+    <div class="container">
+      <div class="breadcrumb">
+        <a href="index.html">Home</a>
+        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><polyline points="9 18 15 12 9 6"/></svg>
+        <span>Video Gallery</span>
+      </div>
+      <span class="section-label">Short Stories</span>
+      <h1 class="section-title">Video Highlights</h1>
+      <p class="section-subtitle">Experience our craftsmanship through quick YouTube Shorts. Watch our team in action and see the final transformations.</p>
+    </div>
+  </section>
+
+  <section class="shorts-section" style="padding: 80px 0;">
+    <div class="container">
+      <div class="shorts-header reveal">
+        <h2>Our Latest Shorts</h2>
+        <p>Premium glass installations, aluminium fittings, and PVC transformations.</p>
+        <a href="https://www.youtube.com/@krishnaglasshouse.netfly" target="_blank" rel="noopener" class="youtube-btn-large">
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="currentColor"><path d="M23.498 6.186a3.016 3.016 0 0 0-2.122-2.136C19.505 3.545 12 3.545 12 3.545s-7.505 0-9.377.505A3.017 3.017 0 0 0 .502 6.186C0 8.07 0 12 0 12s0 3.93.502 5.814a3.016 3.016 0 0 0 2.122 2.136c1.871.505 9.376.505 9.376.505s7.505 0 9.377-.505a3.015 3.015 0 0 0 2.122-2.136C24 15.93 24 12 24 12s0-3.93-.502-5.814zM9.545 15.568V8.432L15.818 12l-6.273 3.568z"/></svg>
+          Visit YouTube Channel
+        </a>
+      </div>
+
+      <div class="shorts-grid">
+        <!-- Short 1 -->
+        <div class="short-card reveal">
+          <div class="short-video-container">
+            <!-- Replace with actual Video ID -->
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="short-info">
+            <span class="short-title">Glass Railing Installation</span>
+            <p class="short-meta">Process & Finish · Delhi</p>
+          </div>
+        </div>
+
+        <!-- Short 2 -->
+        <div class="short-card reveal">
+          <div class="short-video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="short-info">
+            <span class="short-title">Aluminium Window Fitting</span>
+            <p class="short-meta">Precision Work · Janakpuri</p>
+          </div>
+        </div>
+
+        <!-- Short 3 -->
+        <div class="short-card reveal">
+          <div class="short-video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="short-info">
+            <span class="short-title">PVC Wall Transformation</span>
+            <p class="short-meta">Marble Finish · Noida</p>
+          </div>
+        </div>
+
+        <!-- Short 4 -->
+        <div class="short-card reveal">
+          <div class="short-video-container">
+            <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+          </div>
+          <div class="short-info">
+            <span class="short-title">LED Mirror Showcase</span>
+            <p class="short-meta">Touch-Sensor Tech</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <footer class="site-footer" id="site-footer">
+    <div class="container">
+      <div class="footer-grid">
+        <div class="footer-brand">
+          <a href="index.html" class="logo">
+            <div class="logo-icon"><img src="images/kgh.png" alt="Krishna Glass House Logo"></div>
+            <div class="logo-text"><span class="brand-name">KRISHNA GLASS HOUSE</span><span class="brand-tagline">Aluminium & PVC Works</span></div>
+          </a>
+          <p>Delivering premium interior solutions across Delhi NCR since 2021. Watch our success stories.</p>
+        </div>
+        <div class="footer-col">
+          <h4>Quick Links</h4>
+          <a href="index.html">Home</a>
+          <a href="services.html">Services</a>
+          <a href="gallery.html">Portfolio</a>
+          <a href="shorts.html">Video Gallery</a>
+          <a href="about.html">About</a>
+          <a href="contact.html">Contact</a>
+        </div>
+        <div class="footer-col">
+          <h4>Services</h4>
+          <a href="services/glass-facades.html">Glass Facades</a>
+          <a href="services/aluminium-upvc.html">Aluminium Works</a>
+          <a href="services/pvc-wallpapers.html">PVC & Wallpaper</a>
+          <a href="services/glass-railings.html">Glass Railings</a>
+          <a href="services/office-partitions.html">Office Partitions</a>
+          <a href="services/led-mirrors.html">LED Mirrors</a>
+        </div>
+        <div class="footer-col">
+          <h4>Contact</h4>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M21 10c0 7-9 13-9 13s-9-6-9-13a9 9 0 0 1 18 0z"/><circle cx="12" cy="10" r="3"/></svg>
+            <span>Janakpuri, New Delhi</span>
+          </div>
+          <div class="footer-contact-item">
+            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><path d="M22 16.92v3a2 2 0 0 1-2.18 2 19.79 19.79 0 0 1-8.63-3.07 19.5 19.5 0 0 1-6-6 19.79 19.79 0 0 1-3.07-8.67A2 2 0 0 1 4.11 2h3a2 2 0 0 1 2 1.72c.127.96.362 1.903.7 2.81a2 2 0 0 1-.45 2.11L8.09 9.91a16 16 0 0 0 6 6l1.27-1.27a2 2 0 0 1 2.11-.45c.907.338 1.85.573 2.81.7A2 2 0 0 1 22 16.92z"/></svg>
+            <span>+91 87001 62623</span>
+          </div>
+        </div>
+        <div class="footer-col">
+          <h4>Legal</h4>
+          <a href="privacy.html">Privacy Policy</a>
+          <a href="toc.html">Terms & Conditions</a>
+          <a href="refund.html">Refund Policy</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <span>&copy; 2026 Krishna Glass House</span>
+        <span>Designed by <a href="https://mitanshu.explyra.me/" target="_blank">Mitanshu Bhasin</a></span>
+      </div>
+    </div>
+  </footer>
+
+  <script src="js/main.js"></script>
+</body>
+</html>
