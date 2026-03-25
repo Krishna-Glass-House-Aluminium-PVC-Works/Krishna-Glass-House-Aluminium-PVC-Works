@@ -23,9 +23,24 @@ const IGNORE_FILES = [
   '.wrangler'
 ];
 
+// Keep these files as PNG because manifest/screenshot declarations expect image/png.
+const PNG_PRESERVE_BASENAMES = new Set([
+  '48.png',
+  'icon-192.png',
+  'icon-512.png',
+  'icon-maskable-192.png',
+  'icon-maskable-512.png',
+  'screenshot-wide.png',
+  'screenshot-narrow.png'
+]);
+
 async function compressImage(filePath, destPath) {
   const ext = path.extname(filePath).toLowerCase();
   const fileName = path.basename(filePath);
+
+  if (PNG_PRESERVE_BASENAMES.has(fileName)) {
+    return false;
+  }
 
   if (['.png', '.jpg', '.jpeg'].includes(ext)) {
     // Convert all supported images to WebP

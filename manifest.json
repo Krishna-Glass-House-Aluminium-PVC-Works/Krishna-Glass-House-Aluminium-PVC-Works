@@ -3,7 +3,7 @@
   "name": "Krishna Glass House Aluminium & PVC Works",
   "short_name": "Krishna Glass",
   "description": "Best glass and interior hub in Janakpuri, West Delhi. Expert in Toughened Glass, Aluminium, PVC, LED Mirrors & Wallpapers.",
-  "start_url": "/?source=pwa",
+  "start_url": "/",
   "scope": "/",
   "display": "standalone",
   "display_override": [

@@ -84,4 +84,50 @@
     <priority>0.75</priority>
   </url>
 
+  <!-- VIDEO GALLERY -->
+  <url>
+    <loc>https://krishnaglass.explyra.me/shorts.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>weekly</changefreq>
+    <priority>0.75</priority>
+  </url>
+
+  <!-- SERVICE DETAIL PAGES -->
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/glass-railings.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/glass-facades.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/aluminium-upvc.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/led-mirrors.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/office-partitions.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+  <url>
+    <loc>https://krishnaglass.explyra.me/services/pvc-wallpapers.html</loc>
+    <lastmod>2026-03-26</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.80</priority>
+  </url>
+
 </urlset>
