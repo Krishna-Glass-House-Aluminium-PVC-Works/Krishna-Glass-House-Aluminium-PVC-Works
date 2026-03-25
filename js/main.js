@@ -4,6 +4,20 @@
             Scroll reveal, Gallery lightbox, Gallery filters
    ============================================================ */
 
+// Register service worker for PWA installability and offline support.
+if ('serviceWorker' in navigator) {
+  window.addEventListener('load', async () => {
+    try {
+      const registration = await navigator.serviceWorker.register('/sw.js', { scope: '/' });
+      if (registration.waiting) {
+        registration.waiting.postMessage({ type: 'SKIP_WAITING' });
+      }
+    } catch (error) {
+      console.error('Service Worker registration failed:', error);
+    }
+  });
+}
+
 document.addEventListener('DOMContentLoaded', () => {
 
   /* ---------- 1. Header Scroll Effect ---------- */
@@ -275,7 +289,11 @@ document.head.appendChild(styleSheet);
    ============================================================ */
 (function () {
   const GROQ_KEY   = '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';
-  const GROQ_MODEL = 'moonshotai/kimi-k2-instruct-0905';
+  const GROQ_MODELS = [
+    'llama-3.1-8b-instant',
+    'llama3-70b-8192',
+    'mixtral-8x7b-32768'
+  ];
   const GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions';
 
   const SYSTEM_PROMPT = `You are KGH Assistant — the friendly, knowledgeable AI support agent for Krishna Glass House. You help visitors of the website krishnaglass.explyra.me.
@@ -416,6 +434,67 @@ RULES:
     return wrap;
   }
 
+  function sanitizeHtml(text) {
+    return text
+      .replace(/&/g, '&amp;')
+      .replace(/</g, '&lt;')
+      .replace(/>/g, '&gt;')
+      .replace(/"/g, '&quot;')
+      .replace(/'/g, '&#39;');
+  }
+
+  async function requestGroqWithFallback(payloadMessages) {
+    let lastError = new Error('No model response');
+
+    for (const model of GROQ_MODELS) {
+      const controller = new AbortController();
+      const timeoutId = setTimeout(() => controller.abort(), 18000);
+
+      try {
+        const res = await fetch(GROQ_URL, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${GROQ_KEY}`
+          },
+          body: JSON.stringify({
+            model,
+            messages: payloadMessages,
+            temperature: 0.65,
+            max_tokens: 400
+          }),
+          signal: controller.signal
+        });
+
+        clearTimeout(timeoutId);
+
+        if (!res.ok) {
+          let details = '';
+          try {
+            const errorJson = await res.json();
+            details = errorJson?.error?.message || '';
+          } catch {
+            details = '';
+          }
+          throw new Error(`API ${res.status}${details ? `: ${details}` : ''}`);
+        }
+
+        const data = await res.json();
+        const reply = data?.choices?.[0]?.message?.content;
+        if (!reply) {
+          throw new Error('Empty AI response');
+        }
+
+        return reply;
+      } catch (err) {
+        clearTimeout(timeoutId);
+        lastError = err;
+      }
+    }
+
+    throw lastError;
+  }
+
   function showTyping() {
     const wrap = document.createElement('div');
     wrap.className = 'kgh-msg bot';
@@ -442,36 +521,24 @@ RULES:
     inputEl.value = '';
     sendBtn.disabled = true;
 
-    appendMsg('user', q.replace(/</g, '&lt;').replace(/>/g, '&gt;'));
+    appendMsg('user', sanitizeHtml(q));
     messages.push({ role: 'user', content: q });
 
     showTyping();
 
     try {
-      const res = await fetch(GROQ_URL, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-          'Authorization': `Bearer ${GROQ_KEY}`
-        },
-        body: JSON.stringify({
-          model: GROQ_MODEL,
-          messages: messages,
-          temperature: 0.65,
-          max_tokens: 400
-        })
-      });
+      if (!navigator.onLine) {
+        throw new Error('No internet connection');
+      }
 
-      if (!res.ok) throw new Error('API error ' + res.status);
-      const data = await res.json();
-      const reply = data.choices?.[0]?.message?.content || 'Sorry, I couldn\'t get a response. Please try again.';
+      const reply = await requestGroqWithFallback(messages);
       messages.push({ role: 'assistant', content: reply });
 
       hideTyping();
 
       const showWA = reply.includes('[SHOW_WHATSAPP]');
       const cleanReply = reply.replace('[SHOW_WHATSAPP]', '').trim();
-      const formattedReply = cleanReply.replace(/\n/g, '<br>');
+      const formattedReply = sanitizeHtml(cleanReply).replace(/\n/g, '<br>');
       const finalHtml = showWA ? `${formattedReply}<br>${waBtn()}` : formattedReply;
 
       appendMsg('bot', finalHtml);

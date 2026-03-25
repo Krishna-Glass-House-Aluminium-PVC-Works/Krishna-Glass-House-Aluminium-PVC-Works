@@ -1,24 +1,45 @@
 {
+  "id": "/",
   "name": "Krishna Glass House Aluminium & PVC Works",
   "short_name": "Krishna Glass",
   "description": "Best glass and interior hub in Janakpuri, West Delhi. Expert in Toughened Glass, Aluminium, PVC, LED Mirrors & Wallpapers.",
   "start_url": "/?source=pwa",
+  "scope": "/",
   "display": "standalone",
+  "display_override": [
+    "window-controls-overlay",
+    "standalone",
+    "minimal-ui"
+  ],
+  "lang": "en-IN",
+  "dir": "ltr",
   "background_color": "#ffffff",
   "theme_color": "#1a1a2e",
   "orientation": "portrait-primary",
   "icons": [
     {
-      "src": "/images/kgh.png",
+      "src": "/images/icon-192.png",
       "sizes": "192x192",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
     },
     {
-      "src": "/images/kgh.png",
+      "src": "/images/icon-maskable-192.png",
+      "sizes": "192x192",
+      "type": "image/png",
+      "purpose": "maskable"
+    },
+    {
+      "src": "/images/icon-512.png",
       "sizes": "512x512",
       "type": "image/png",
-      "purpose": "any maskable"
+      "purpose": "any"
+    },
+    {
+      "src": "/images/icon-maskable-512.png",
+      "sizes": "512x512",
+      "type": "image/png",
+      "purpose": "maskable"
     }
   ],
   "categories": [
@@ -30,17 +51,32 @@
     {
       "name": "Services",
       "url": "/services.html",
-      "icons": [{ "src": "/images/kgh.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Portfolio",
       "url": "/gallery.html",
-      "icons": [{ "src": "/images/kgh.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     },
     {
       "name": "Contact Us",
       "url": "/contact.html",
-      "icons": [{ "src": "/images/kgh.png", "sizes": "96x96" }]
+      "icons": [{ "src": "/images/icon-192.png", "sizes": "192x192", "type": "image/png" }]
     }
-  ]
+  ],
+  "screenshots": [
+    {
+      "src": "/images/screenshot-wide.png",
+      "sizes": "1280x720",
+      "type": "image/png",
+      "form_factor": "wide"
+    },
+    {
+      "src": "/images/screenshot-narrow.png",
+      "sizes": "720x1280",
+      "type": "image/png",
+      "form_factor": "narrow"
+    }
+  ],
+  "prefer_related_applications": false
 }

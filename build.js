@@ -42,6 +42,52 @@ async function compressImage(filePath, destPath) {
   return false;
 }
 
+async function ensurePwaAssets(baseDir) {
+  const imagesDir = path.join(baseDir, 'images');
+  const logoCandidates = [
+    path.join(imagesDir, 'kgh.png'),
+    path.join(imagesDir, 'kgh.webp')
+  ];
+  const heroCandidates = [
+    path.join(imagesDir, 'hero-slide-1.png'),
+    path.join(imagesDir, 'hero-slide-1.webp')
+  ];
+
+  const logoSrc = logoCandidates.find((candidate) => fs.existsSync(candidate));
+  const heroSrc = heroCandidates.find((candidate) => fs.existsSync(candidate));
+
+  if (logoSrc) {
+    const iconTargets = [
+      { name: 'icon-192.png', size: 192, fit: 'contain' },
+      { name: 'icon-512.png', size: 512, fit: 'contain' },
+      { name: 'icon-maskable-192.png', size: 192, fit: 'cover' },
+      { name: 'icon-maskable-512.png', size: 512, fit: 'cover' }
+    ];
+
+    for (const target of iconTargets) {
+      await sharp(logoSrc)
+        .resize(target.size, target.size, {
+          fit: target.fit,
+          background: { r: 255, g: 255, b: 255, alpha: 1 }
+        })
+        .png({ quality: 92 })
+        .toFile(path.join(imagesDir, target.name));
+    }
+  }
+
+  if (heroSrc) {
+    await sharp(heroSrc)
+      .resize(1280, 720, { fit: 'cover' })
+      .png({ quality: 88 })
+      .toFile(path.join(imagesDir, 'screenshot-wide.png'));
+
+    await sharp(heroSrc)
+      .resize(720, 1280, { fit: 'cover' })
+      .png({ quality: 88 })
+      .toFile(path.join(imagesDir, 'screenshot-narrow.png'));
+  }
+}
+
 async function build() {
   console.log('🚀 Starting build process...');
 
@@ -60,6 +106,9 @@ async function build() {
       await fs.copy(path.join(srcDir, file), path.join(distDir, file));
     }
   }
+
+  // Ensure required PWA icons and screenshots exist before compression/replacement.
+  await ensurePwaAssets(distDir);
 
   // 3. Process Images (Recursive)
   console.log('🖼️  Optimizing images...');
