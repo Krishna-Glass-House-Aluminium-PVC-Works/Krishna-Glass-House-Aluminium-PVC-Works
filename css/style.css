@@ -2459,3 +2459,184 @@ h6 {
     bottom: 80px
   }
 }
+
+/* --- Chat Report Option --- */
+.kgh-msg-report {
+  opacity: 0.6;
+  background: #fff;
+  border: 1px solid var(--color-gray-200);
+  border-radius: 50%;
+  width: 26px;
+  height: 26px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  color: var(--color-gray-400);
+  transition: all .2s;
+  margin-left: 6px;
+  flex-shrink: 0;
+  box-shadow: var(--shadow-sm);
+}
+
+.kgh-msg-report:hover {
+  opacity: 1;
+  color: #ef4444;
+  border-color: #fecaca;
+  background: #fff;
+  transform: scale(1.15);
+}
+
+.kgh-msg-report svg {
+  width: 13px;
+  height: 13px;
+  stroke-width: 2.5;
+}
+
+/* Report Modal Overlay */
+.kgh-report-overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+  z-index: 2000;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  opacity: 0;
+  transition: opacity .3s ease;
+}
+
+.kgh-report-overlay.visible {
+  display: flex;
+  opacity: 1;
+}
+
+.kgh-report-modal {
+  background: var(--color-white);
+  padding: 28px;
+  border-radius: 20px;
+  width: 90%;
+  max-width: 380px;
+  box-shadow: var(--shadow-xl);
+  transform: translateY(24px);
+  transition: transform .35s var(--ease-out);
+}
+
+.kgh-report-overlay.visible .kgh-report-modal {
+  transform: translateY(0);
+}
+
+.kgh-report-modal h3 {
+  font-size: 20px;
+  margin-bottom: 10px;
+  color: var(--color-gray-900);
+  font-family: var(--font-heading);
+}
+
+.kgh-report-modal p {
+  font-size: 14px;
+  color: var(--color-gray-500);
+  margin-bottom: 20px;
+  line-height: 1.5;
+}
+
+.kgh-report-email-wrap {
+  margin-bottom: 20px;
+}
+
+.kgh-report-email-wrap label {
+  display: block;
+  font-size: 13px;
+  font-weight: 600;
+  color: var(--color-gray-700);
+  margin-bottom: 8px;
+}
+
+.kgh-report-email-wrap input {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1.5px solid var(--color-gray-200);
+  border-radius: 12px;
+  font-size: 14px;
+  outline: none;
+  background: var(--color-gray-50);
+  transition: border-color .2s;
+}
+
+.kgh-report-email-wrap input:focus {
+  border-color: var(--color-accent);
+  background: #fff;
+}
+
+.kgh-report-options {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  margin-bottom: 28px;
+}
+
+.kgh-report-options label {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  font-size: 14.5px;
+  color: var(--color-gray-700);
+  cursor: pointer;
+  padding: 12px 16px;
+  background: var(--color-gray-50);
+  border: 1px solid var(--color-gray-100);
+  border-radius: 12px;
+  transition: all .2s;
+}
+
+.kgh-report-options label:hover {
+  background: var(--color-white);
+  border-color: var(--color-accent);
+  color: var(--color-accent);
+}
+
+.kgh-report-options input {
+  accent-color: var(--color-accent);
+  width: 16px;
+  height: 16px;
+}
+
+.kgh-report-actions {
+  display: flex;
+  gap: 12px;
+}
+
+.kgh-report-actions button {
+  flex: 1;
+  padding: 12px;
+  border-radius: 12px;
+  font-size: 14px;
+  font-weight: 700;
+  transition: all .2s;
+  letter-spacing: 0.5px;
+  text-transform: uppercase;
+}
+
+.kgh-report-cancel {
+  background: var(--color-gray-100);
+  color: var(--color-gray-600);
+}
+
+.kgh-report-submit {
+  background: #ef4444;
+  color: #fff;
+  box-shadow: 0 4px 12px rgba(239, 68, 68, 0.25);
+}
+
+.kgh-report-cancel:hover {
+  background: var(--color-gray-200);
+  color: var(--color-gray-800);
+}
+
+.kgh-report-submit:hover {
+  background: #dc2626;
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(239, 68, 68, 0.35);
+}
