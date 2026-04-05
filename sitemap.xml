@@ -7,22 +7,22 @@
 
   <!-- HOME PAGE -->
   <url>
-    <loc>https://krishnaglass.explyra.me/</loc>
+    <loc>https://www.krishnaglasshouse.com/</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>1.00</priority>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-1.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/hero-slide-1.png</image:loc>
       <image:title>Krishna Glass House — Best Glass Shop in Janakpuri</image:title>
       <image:caption>Custom glass facade by Krishna Glass House, Janakpuri, West Delhi</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-2.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/hero-slide-2.png</image:loc>
       <image:title>Aluminium Windows by Krishna Glass House</image:title>
       <image:caption>Premium aluminium and uPVC windows by Krishna Glass House, Pankha Road</image:caption>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-3.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/hero-slide-3.png</image:loc>
       <image:title>Glass Railing Installation Delhi — Krishna Glass House</image:title>
       <image:caption>Frameless toughened glass railing installation by Krishna Glass House, Janakpuri</image:caption>
     </image:image>
@@ -30,47 +30,47 @@
 
   <!-- SERVICES PAGE -->
   <url>
-    <loc>https://krishnaglass.explyra.me/services.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.90</priority>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/hero-slide-1.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/hero-slide-1.png</image:loc>
       <image:title>Toughened Glass Manufacturers Delhi — Krishna Glass House</image:title>
     </image:image>
   </url>
 
   <!-- GALLERY PAGE -->
   <url>
-    <loc>https://krishnaglass.explyra.me/gallery.html</loc>
+    <loc>https://www.krishnaglasshouse.com/gallery.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.85</priority>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/gallery-1.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/gallery-1.png</image:loc>
       <image:title>Krishna Glass House Shop — Interior Hub Janakpuri</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/gallery-2.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/gallery-2.png</image:loc>
       <image:title>Aluminium Windows — Krishna Glass House Delhi</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/gallery-4.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/gallery-4.png</image:loc>
       <image:title>Glass Office Partition — Krishna Glass House West Delhi</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/gallery-7.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/gallery-7.png</image:loc>
       <image:title>Designer LED Mirror — Krishna Glass House Janakpuri</image:title>
     </image:image>
     <image:image>
-      <image:loc>https://krishnaglass.explyra.me/images/gallery-8.png</image:loc>
+      <image:loc>https://www.krishnaglasshouse.com/images/gallery-8.png</image:loc>
       <image:title>PVC Wall Panels &amp; Wallpaper — Mohan Nagar Delhi</image:title>
     </image:image>
   </url>
 
   <!-- CONTACT PAGE -->
   <url>
-    <loc>https://krishnaglass.explyra.me/contact.html</loc>
+    <loc>https://www.krishnaglasshouse.com/contact.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.85</priority>
@@ -78,7 +78,7 @@
 
   <!-- ABOUT PAGE -->
   <url>
-    <loc>https://krishnaglass.explyra.me/about.html</loc>
+    <loc>https://www.krishnaglasshouse.com/about.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.75</priority>
@@ -86,7 +86,7 @@
 
   <!-- VIDEO GALLERY -->
   <url>
-    <loc>https://krishnaglass.explyra.me/shorts.html</loc>
+    <loc>https://www.krishnaglasshouse.com/shorts.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>weekly</changefreq>
     <priority>0.75</priority>
@@ -94,37 +94,37 @@
 
   <!-- SERVICE DETAIL PAGES -->
   <url>
-    <loc>https://krishnaglass.explyra.me/services/glass-railings.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/glass-railings.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://krishnaglass.explyra.me/services/glass-facades.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/glass-facades.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://krishnaglass.explyra.me/services/aluminium-upvc.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/aluminium-upvc.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://krishnaglass.explyra.me/services/led-mirrors.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/led-mirrors.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://krishnaglass.explyra.me/services/office-partitions.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/office-partitions.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>
   </url>
   <url>
-    <loc>https://krishnaglass.explyra.me/services/pvc-wallpapers.html</loc>
+    <loc>https://www.krishnaglasshouse.com/services/pvc-wallpapers.html</loc>
     <lastmod>2026-03-26</lastmod>
     <changefreq>monthly</changefreq>
     <priority>0.80</priority>

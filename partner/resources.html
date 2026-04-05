@@ -1,0 +1,144 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Resources — Explyra Partner Portal</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              apple: {
+                gray: { 50: '#F5F5F7', 100: '#E8E8ED', 200: '#D2D2D7', 300: '#86868B', 400: '#6E6E73', 500: '#1D1D1F' },
+                blue: '#0071E3',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #FBFBFD; color: #1D1D1F; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+        .res-card { @apply bg-white border border-apple-gray-100 rounded-3xl p-6 transition-all duration-300 hover:shadow-xl hover:-translate-y-1 relative; }
+        .category-pill { @apply px-3 py-1 rounded-full text-xs font-semibold bg-apple-gray-50 text-apple-gray-400 group-hover:bg-blue-50 group-hover:text-blue-600 transition-colors; }
+    </style>
+  <link rel="canonical" href="https://www.krishnaglasshouse.com/partner/resources.html">
+
+  <meta property="og:site_name" content="Krishna Glass House">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Krishna Glass House">
+</head>
+<body class="antialiased min-h-screen">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 glass border-b border-apple-gray-100 px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="p-2 -ml-2 hover:bg-apple-gray-100 rounded-lg text-apple-gray-500 transition-colors">
+          <i data-lucide="arrow-left" class="w-6 h-6"></i>
+        </a>
+        <h1 class="text-xl font-semibold tracking-tight">Resource Vault</h1>
+      </div>
+      <img src="assets/logo-nobg.png" alt="Explyra Logo" class="h-6">
+    </nav>
+
+    <main class="max-w-7xl mx-auto p-6 lg:p-12 space-y-12">
+        
+        <!-- Header -->
+        <header class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+            <div class="space-y-2">
+                <h2 class="text-4xl font-extrabold tracking-tight">Partners Library</h2>
+                <p class="text-apple-gray-300 max-w-lg">Access technical documents, pricing catalogs, and sales toolkits to boost your conversions.</p>
+            </div>
+            
+            <div class="flex items-center gap-3">
+                <div class="relative group">
+                    <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-apple-gray-300 group-focus-within:text-apple-blue transition-colors"></i>
+                    <input type="text" placeholder="Filter resources..." class="bg-white border border-apple-gray-100 rounded-2xl pl-11 pr-4 py-3 min-w-[280px] focus:ring-2 focus:ring-apple-blue/20 outline-none shadow-sm">
+                </div>
+                <button class="bg-apple-gray-500 text-white p-3 rounded-2xl hover:bg-opacity-90 active:scale-95 transition-all outline-none">
+                    <i data-lucide="sliders-horizontal" class="w-5 h-5"></i>
+                </button>
+            </div>
+        </header>
+
+        <!-- Categories -->
+        <div class="flex flex-wrap items-center gap-3">
+            <button class="px-5 py-2.5 rounded-full bg-apple-gray-500 text-white font-semibold text-sm">All Resources</button>
+            <button class="px-5 py-2.5 rounded-full bg-white border border-apple-gray-100 text-apple-gray-400 font-semibold text-sm hover:bg-apple-gray-50 transition-all">Pricing</button>
+            <button class="px-5 py-2.5 rounded-full bg-white border border-apple-gray-100 text-apple-gray-400 font-semibold text-sm hover:bg-apple-gray-50 transition-all">Manuals</button>
+            <button class="px-5 py-2.5 rounded-full bg-white border border-apple-gray-100 text-apple-gray-400 font-semibold text-sm hover:bg-apple-gray-50 transition-all">Marketing Brushes</button>
+        </div>
+
+        <!-- Resource Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 pb-12">
+            
+            <!-- Resource Item -->
+            <div class="res-card group">
+                <div class="flex items-start justify-between mb-8">
+                    <div class="p-3 bg-red-50 text-red-500 rounded-2xl group-hover:bg-red-100 transition-colors">
+                        <i data-lucide="file-text" class="w-8 h-8"></i>
+                    </div>
+                    <span class="category-pill">Latest Pricing</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Explyra Glazing Catalog 2026</h3>
+                <p class="text-sm text-apple-gray-300 line-clamp-2 mb-6">Complete pricing guide for Toughened Glass & Frameless systems including installation charts.</p>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-apple-gray-50">
+                    <p class="text-xs font-medium text-apple-gray-200 uppercase tracking-widest">PDF &bull; 4.2 MB</p>
+                    <button class="text-apple-blue hover:text-blue-700 font-bold p-2 transition-colors"><i data-lucide="download" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+
+            <div class="res-card group">
+                <div class="flex items-start justify-between mb-8">
+                    <div class="p-3 bg-blue-50 text-blue-500 rounded-2xl group-hover:bg-blue-100 transition-colors">
+                        <i data-lucide="info" class="w-8 h-8"></i>
+                    </div>
+                    <span class="category-pill">Guidelines</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Installation Standard OS-202</h3>
+                <p class="text-sm text-apple-gray-300 line-clamp-2 mb-6">Safety protocols and structural requirements for high-altitude facade installations.</p>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-apple-gray-50">
+                    <p class="text-xs font-medium text-apple-gray-200 uppercase tracking-widest">PDF &bull; 8.1 MB</p>
+                    <button class="text-apple-blue hover:text-blue-700 font-bold p-2 transition-colors"><i data-lucide="download" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+
+            <div class="res-card group">
+                <div class="flex items-start justify-between mb-8">
+                    <div class="p-3 bg-purple-50 text-purple-500 rounded-2xl group-hover:bg-purple-100 transition-colors">
+                        <i data-lucide="film" class="w-8 h-8"></i>
+                    </div>
+                    <span class="category-pill">Marketing Assets</span>
+                </div>
+                <h3 class="text-xl font-bold mb-2">Social Media Poster Toolkit</h3>
+                <p class="text-sm text-apple-gray-300 line-clamp-2 mb-6">High-resolution project images and templates for LinkedIn, Instagram & WhatsApp.</p>
+                
+                <div class="flex items-center justify-between pt-4 border-t border-apple-gray-50">
+                    <p class="text-xs font-medium text-apple-gray-200 uppercase tracking-widest">ZIP &bull; 125 MB</p>
+                    <button class="text-apple-blue hover:text-blue-700 font-bold p-2 transition-colors"><i data-lucide="download" class="w-5 h-5"></i></button>
+                </div>
+            </div>
+
+        </div>
+
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

@@ -285,18 +285,12 @@ document.head.appendChild(styleSheet);
 })();
 
 /* ============================================================
-   AI CHATBOT — Krishna Glass House Assistant (Groq / Kimi K2)
+   AI CHATBOT — Krishna Glass House Assistant (Gemini 2.5 Flash)
    ============================================================ */
 (function () {
-  const GROQ_KEY   = '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';
-  const GROQ_MODELS = [
-    'llama-3.1-8b-instant',
-    'llama3-70b-8192',
-    'mixtral-8x7b-32768'
-  ];
-  const GROQ_URL   = 'https://api.groq.com/openai/v1/chat/completions';
+  const CHAT_API_URL = '/api/chat';
 
-  const SYSTEM_PROMPT = `You are KGH Assistant — the friendly, knowledgeable AI support agent for Krishna Glass House. You help visitors of the website krishnaglass.explyra.me.
+  const SYSTEM_PROMPT = `You are KGH Assistant — the friendly, knowledgeable AI support agent for Krishna Glass House. You help visitors of the website www.krishnaglasshouse.com.
 
 BUSINESS DETAILS YOU MUST KNOW:
 - Business Name: Krishna Glass House (Aluminium, Wallpaper & PVC Works)
@@ -312,7 +306,7 @@ CONTACT:
 - Phone (Pankaj): +91 99995 51275
 - WhatsApp: +91 87001 62623
 - Email: mfskufgu@gmail.com
-- Website: https://krishnaglass.explyra.me/
+- Website: https://www.krishnaglasshouse.com/
 
 LOCATION:
 - Shop No. 2, Mohan Nagar, Pankha Road, Opposite D-Block Janakpuri, New Delhi — 110046
@@ -401,7 +395,7 @@ RULES:
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"><line x1="22" y1="2" x2="11" y2="13"/><polygon points="22 2 15 22 11 13 2 9 22 2"/></svg>
       </button>
     </div>
-    <div class="kgh-chat-footer">Powered by Groq · Krishna Glass House AI</div>`;
+    <div class="kgh-chat-footer">Powered by Gemini · Krishna Glass House AI</div>`;
 
   document.body.appendChild(fab);
   document.body.appendChild(panel);
@@ -454,56 +448,48 @@ RULES:
       .replace(/'/g, '&#39;');
   }
 
-  async function requestGroqWithFallback(payloadMessages) {
-    let lastError = new Error('No model response');
+  async function requestAiEndpoint(payloadMessages) {
+    const controller = new AbortController();
+    const timeoutId = setTimeout(() => controller.abort(), 18000);
 
-    for (const model of GROQ_MODELS) {
-      const controller = new AbortController();
-      const timeoutId = setTimeout(() => controller.abort(), 18000);
+    try {
+      const res = await fetch(CHAT_API_URL, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          messages: payloadMessages,
+          temperature: 0.65,
+          max_tokens: 400
+        }),
+        signal: controller.signal
+      });
 
-      try {
-        const res = await fetch(GROQ_URL, {
-          method: 'POST',
-          headers: {
-            'Content-Type': 'application/json',
-            'Authorization': `Bearer ${GROQ_KEY}`
-          },
-          body: JSON.stringify({
-            model,
-            messages: payloadMessages,
-            temperature: 0.65,
-            max_tokens: 400
-          }),
-          signal: controller.signal
-        });
+      clearTimeout(timeoutId);
 
-        clearTimeout(timeoutId);
-
-        if (!res.ok) {
-          let details = '';
-          try {
-            const errorJson = await res.json();
-            details = errorJson?.error?.message || '';
-          } catch {
-            details = '';
-          }
-          throw new Error(`API ${res.status}${details ? `: ${details}` : ''}`);
+      if (!res.ok) {
+        let details = '';
+        try {
+          const errorJson = await res.json();
+          details = errorJson?.error?.message || '';
+        } catch {
+          details = '';
         }
-
-        const data = await res.json();
-        const reply = data?.choices?.[0]?.message?.content;
-        if (!reply) {
-          throw new Error('Empty AI response');
-        }
-
-        return reply;
-      } catch (err) {
-        clearTimeout(timeoutId);
-        lastError = err;
+        throw new Error(`API ${res.status}${details ? `: ${details}` : ''}`);
       }
-    }
 
-    throw lastError;
+      const data = await res.json();
+      const reply = data?.choices?.[0]?.message?.content;
+      if (!reply) {
+        throw new Error('Empty AI response');
+      }
+
+      return reply;
+    } catch (err) {
+      clearTimeout(timeoutId);
+      throw err;
+    }
   }
 
   function showTyping() {
@@ -542,7 +528,7 @@ RULES:
         throw new Error('No internet connection');
       }
 
-      const reply = await requestGroqWithFallback(messages);
+      const reply = await requestAiEndpoint(messages);
       messages.push({ role: 'assistant', content: reply });
 
       hideTyping();

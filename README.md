@@ -2,7 +2,7 @@
 
 Welcome to the professional redesign of the **Krishna Glass House** website. This project aims to deliver a premium, high-performance, and SEO-optimized web experience for Delhi NCR's leading glass and aluminium specialists.
 
-[![Live Site](https://img.shields.io/badge/Live-Visit%20Site-0f7173?style=for-the-badge)](https://krishnaglass.explyra.me/)
+[![Live Site](https://img.shields.io/badge/Live-Visit%20Site-0f7173?style=for-the-badge)](https://www.krishnaglasshouse.com/)
 [![Cloudflare Pages](https://img.shields.io/badge/Hosted%20On-Cloudflare%20Pages-f38020?style=for-the-badge&logo=cloudflare&logoColor=white)](https://pages.cloudflare.com/)
 
 ---

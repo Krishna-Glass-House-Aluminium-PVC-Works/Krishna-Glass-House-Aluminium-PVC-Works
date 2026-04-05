@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login — Explyra Partner Portal</title>
+    
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              apple: {
+                gray: { 50: '#F5F5F7', 100: '#E8E8ED', 200: '#D2D2D7', 300: '#86868B', 400: '#6E6E73', 500: '#1D1D1F' },
+                blue: '#0071E3',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    
+    <style>
+        body { background-color: #FBFBFD; color: #1D1D1F; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+        input { transition: all 0.2s cubic-bezier(0.175, 0.885, 0.32, 1.275); }
+    </style>
+  <link rel="canonical" href="https://www.krishnaglasshouse.com/partner/login.html">
+
+  <meta property="og:site_name" content="Krishna Glass House">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Krishna Glass House">
+</head>
+<body class="antialiased min-h-screen flex items-center justify-center p-6">
+
+    <div class="w-full max-w-md space-y-8 fade-in">
+        <!-- Logo Header -->
+        <div class="text-center space-y-4">
+            <div class="flex justify-center flex-col items-center gap-3">
+                <img src="assets/logo-nobg.png" alt="Explyra Logo" class="h-10">
+                <h1 class="text-2xl font-bold tracking-tight">Partner Portal Login</h1>
+                <p class="text-apple-gray-300 text-sm">Please enter your credentials to access your dashboard.</p>
+            </div>
+        </div>
+
+        <!-- Login Card -->
+        <div class="bg-white border border-apple-gray-100 rounded-3xl p-8 shadow-[0_8px_40px_rgb(0,0,0,0.03)] space-y-6">
+            <form id="loginForm" class="space-y-4">
+                <div class="space-y-2">
+                    <label for="email" class="text-xs font-semibold uppercase tracking-wider text-apple-gray-400 pl-1">Email Address</label>
+                    <div class="relative group">
+                        <i data-lucide="mail" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-apple-gray-300 group-focus-within:text-apple-blue transition-colors"></i>
+                        <input type="email" id="email" required placeholder="name@company.com" 
+                               class="w-full bg-apple-gray-50 border-none rounded-2xl py-3 pl-11 pr-4 focus:ring-2 focus:ring-apple-blue/20 outline-none placeholder:text-apple-gray-200">
+                    </div>
+                </div>
+
+                <div class="space-y-2">
+                    <label for="password" class="text-xs font-semibold uppercase tracking-wider text-apple-gray-400 pl-1">Password</label>
+                    <div class="relative group">
+                        <i data-lucide="lock" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-apple-gray-300 group-focus-within:text-apple-blue transition-colors"></i>
+                        <input type="password" id="password" required placeholder="••••••••" 
+                               class="w-full bg-apple-gray-50 border-none rounded-2xl py-3 pl-11 pr-4 focus:ring-2 focus:ring-apple-blue/20 outline-none placeholder:text-apple-gray-200">
+                    </div>
+                </div>
+
+                <div class="flex items-center justify-between text-xs font-medium px-1">
+                    <label class="flex items-center gap-2 cursor-pointer text-apple-gray-400 hover:text-apple-gray-500">
+                        <input type="checkbox" class="w-4 h-4 rounded border-apple-gray-100 accent-apple-blue">
+                        Remember me
+                    </label>
+                    <a href="#" class="text-apple-blue hover:underline">Forgot password?</a>
+                </div>
+
+                <button type="submit" class="w-full bg-apple-gray-500 text-white font-semibold py-3.5 rounded-2xl transition-all duration-300 transform active:scale-[0.98] hover:shadow-lg hover:shadow-apple-gray-500/20 active:opacity-90">
+                    Sign in to Portal
+                </button>
+            </form>
+
+            <div class="relative py-2">
+                <div class="absolute inset-0 flex items-center"><span class="w-full border-t border-apple-gray-50"></span></div>
+                <div class="relative flex justify-center text-xs uppercase"><span class="bg-white px-2 text-apple-gray-300">Or request access</span></div>
+            </div>
+
+            <button class="w-full bg-white border border-apple-gray-100 text-apple-gray-500 font-semibold py-3 rounded-2xl transition-all hover:bg-apple-gray-50 flex items-center justify-center gap-2">
+                <i data-lucide="external-link" class="w-4 h-4"></i>
+                Become a Partner
+            </button>
+        </div>
+
+        <!-- Footer -->
+        <p class="text-center text-xs text-apple-gray-300">
+            &copy; 2026 Explyra Inc. All rights reserved.<br>
+            <a href="#" class="hover:text-apple-gray-400 underline underline-offset-4 mt-2 inline-block">Security Policy</a> &bull; <a href="#" class="hover:text-apple-gray-400 underline underline-offset-4 ml-2">Privacy</a>
+        </p>
+    </div>
+
+    <script>
+        lucide.createIcons();
+
+        // Basic Login Simulation for the Redirection Logic requirement
+        const form = document.getElementById('loginForm');
+        form.addEventListener('submit', (e) => {
+            e.preventDefault();
+            // Simulate Authentication
+            localStorage.setItem('partner_auth', 'true');
+            
+            // Redirect to dashboard
+            window.location.href = 'index.html';
+        });
+    </script>
+</body>
+</html>

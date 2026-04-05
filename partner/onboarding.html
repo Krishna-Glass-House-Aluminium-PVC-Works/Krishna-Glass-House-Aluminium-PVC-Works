@@ -1,0 +1,155 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Onboarding — Explyra Partner Portal</title>
+    <!-- Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script>
+      tailwind.config = {
+        theme: {
+          extend: {
+            fontFamily: { sans: ['Inter', 'sans-serif'] },
+            colors: {
+              apple: {
+                gray: { 50: '#F5F5F7', 100: '#E8E8ED', 200: '#D2D2D7', 300: '#86868B', 400: '#6E6E73', 500: '#1D1D1F' },
+                blue: '#0071E3',
+              }
+            }
+          }
+        }
+      }
+    </script>
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <style>
+        body { background-color: #FBFBFD; color: #1D1D1F; font-family: 'Inter', sans-serif; }
+        .glass { background: rgba(255, 255, 255, 0.72); backdrop-filter: saturate(180%) blur(20px); -webkit-backdrop-filter: saturate(180%) blur(20px); }
+        .card { @apply bg-white border border-apple-gray-100 rounded-3xl p-8; }
+        .input-field { @apply w-full bg-apple-gray-50 border-none rounded-2xl py-3.5 px-4 focus:ring-2 focus:ring-apple-blue/20 outline-none transition-all; }
+        .label { @apply text-xs font-semibold uppercase tracking-wider text-apple-gray-400 pl-1 mb-2 block; }
+    </style>
+  <link rel="canonical" href="https://www.krishnaglasshouse.com/partner/onboarding.html">
+
+  <meta property="og:site_name" content="Krishna Glass House">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Krishna Glass House">
+</head>
+<body class="antialiased">
+
+    <!-- Navbar -->
+    <nav class="sticky top-0 z-40 glass border-b border-apple-gray-100 px-6 py-4 flex items-center justify-between">
+      <div class="flex items-center gap-4">
+        <a href="index.html" class="p-2 -ml-2 hover:bg-apple-gray-100 rounded-lg text-apple-gray-500 transition-colors">
+          <i data-lucide="arrow-left" class="w-6 h-6"></i>
+        </a>
+        <h1 class="text-xl font-semibold tracking-tight">Partner Onboarding</h1>
+      </div>
+      <img src="assets/logo-nobg.png" alt="Explyra Logo" class="h-6">
+    </nav>
+
+    <main class="max-w-4xl mx-auto p-6 lg:p-12 space-y-12">
+        
+        <!-- Header -->
+        <header class="text-center space-y-3">
+            <h2 class="text-3xl font-extrabold tracking-tight">New Lead Enrollment</h2>
+            <p class="text-apple-gray-300 max-w-lg mx-auto">Fill in the details below to submit a new project lead for the Explyra partner network.</p>
+        </header>
+
+        <!-- Onboarding Steps Indicator -->
+        <div class="flex items-center justify-center gap-4">
+            <div class="flex items-center gap-2 text-apple-blue font-semibold">
+                <span class="w-8 h-8 rounded-full bg-apple-blue text-white flex items-center justify-center text-sm shadow-lg shadow-apple-blue/20">1</span>
+                <span>Details</span>
+            </div>
+            <div class="w-12 h-[2px] bg-apple-gray-100"></div>
+            <div class="flex items-center gap-2 text-apple-gray-300">
+                <span class="w-8 h-8 rounded-full bg-apple-gray-100 flex items-center justify-center text-sm">2</span>
+                <span>Review</span>
+            </div>
+            <div class="w-12 h-[2px] bg-apple-gray-100"></div>
+            <div class="flex items-center gap-2 text-apple-gray-300">
+                <span class="w-8 h-8 rounded-full bg-apple-gray-100 flex items-center justify-center text-sm">3</span>
+                <span>Submit</span>
+            </div>
+        </div>
+
+        <!-- Enrollment Form -->
+        <div class="card space-y-10">
+            <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
+                <!-- Personal/Business Info -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="user-check" class="w-5 h-5 text-apple-blue"></i> Contact Information</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="label">Full Name</label>
+                            <input type="text" placeholder="Lead Name" class="input-field">
+                        </div>
+                        <div>
+                            <label class="label">Business Email</label>
+                            <input type="email" placeholder="example@business.com" class="input-field">
+                        </div>
+                        <div>
+                            <label class="label">Phone Number</label>
+                            <input type="tel" placeholder="+91 0000 00000" class="input-field">
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Project Details -->
+                <div class="space-y-6">
+                    <h3 class="text-lg font-bold flex items-center gap-2"><i data-lucide="briefcase" class="w-5 h-5 text-apple-blue"></i> Project Requirements</h3>
+                    <div class="space-y-4">
+                        <div>
+                            <label class="label">Category</label>
+                            <select class="input-field cursor-pointer appearance-none bg-no-repeat bg-[right_1rem_center]" style="background-image: url('data:image/svg+xml;charset=US-ASCII,%3Csvg%20xmlns%3D%22http%3A%2F%2Fwww.w3.org%2F2000%2Fsvg%22%20width%3D%2224%22%20height%3D%2224%22%20viewBox%3D%220%200%2024%2024%22%20fill%3D%22none%22%20stroke%3D%22%2386868B%22%20stroke-width%3D%222%22%20stroke-linecap%3D%22round%22%20stroke-linejoin%3D%22round%22%3E%3Cpolyline%20points%3D%226%209%2012%2015%2018%209%22%3E%3C%2Fpolyline%3E%3C%2Fsvg%3E')">
+                                <option>Glass Facades</option>
+                                <option>Office Partitions</option>
+                                <option>uPVC Windows/Doors</option>
+                                <option>Aluminium Systems</option>
+                                <option>Custom Glass Works</option>
+                            </select>
+                        </div>
+                        <div>
+                            <label class="label">Estimated Area (sq. ft.)</label>
+                            <input type="number" placeholder="e.g., 2500" class="input-field">
+                        </div>
+                        <div>
+                            <label class="label">Site Location</label>
+                            <input type="text" placeholder="City, Area" class="input-field">
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Notes -->
+            <div class="space-y-4 pt-4 border-t border-apple-gray-50">
+                <label class="label">Additional Consultant Notes</label>
+                <textarea rows="4" placeholder="Any specific details or urgency..." class="input-field resize-none"></textarea>
+            </div>
+
+            <!-- Action -->
+            <div class="flex items-center justify-between pt-6">
+                <p class="text-xs text-apple-gray-300 italic">Auto-saving as draft...</p>
+                <button class="bg-apple-gray-500 text-white font-semibold py-3 px-8 rounded-2xl flex items-center gap-2 hover:bg-opacity-90 active:scale-95 transition-all">
+                    Next Step <i data-lucide="chevron-right" class="w-4 h-4"></i>
+                </button>
+            </div>
+        </div>
+
+        <footer class="text-center text-xs text-apple-gray-300">
+            For support regarding the onboarding process, reach out to partners@explyra.me
+        </footer>
+    </main>
+
+    <script>
+        lucide.createIcons();
+    </script>
+</body>
+</html>

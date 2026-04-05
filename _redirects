@@ -1,5 +1,8 @@
+# 301 SEO Domain Redirect (krishnaglass.explyra.me -> krishnaglasshouse.com)
+https://krishnaglass.explyra.me/* https://www.krishnaglasshouse.com/:splat 301
+
 # Redirect to non-www and HTTPS (Cloudflare does this by default if enabled, but good to have)
-# https://krishnaglass.explyra.me/* https://krishnaglass.explyra.me/:splat 301!
+# https://www.krishnaglasshouse.com/* https://www.krishnaglasshouse.com/:splat 301!
 
 # Handle index.html to / for SEO (Canonicalize)
 /index.html / 301

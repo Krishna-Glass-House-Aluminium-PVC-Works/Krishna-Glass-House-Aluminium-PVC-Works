@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Explyra — Partner Portal Dashboard</title>
+  <meta name="description" content="Official Partner Portal for Explyra partners. Manage your account, resources, and performance.">
+  
+  <!-- Fonts: Inter for that modern Apple aesthetic -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['Inter', 'sans-serif'],
+          },
+          colors: {
+            apple: {
+              gray: {
+                50: '#F5F5F7',
+                100: '#E8E8ED',
+                200: '#D2D2D7',
+                300: '#86868B',
+                400: '#6E6E73',
+                500: '#1D1D1F',
+              },
+              blue: '#0071E3',
+              link: '#06c'
+            }
+          }
+        }
+      }
+    }
+  </script>
+
+  <!-- Lucide Icons -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+  
+  <style>
+    /* Custom Apple-style glassmorphism and subtle animations */
+    .glass {
+      background: rgba(255, 255, 255, 0.72);
+      backdrop-filter: saturate(180%) blur(20px);
+      -webkit-backdrop-filter: saturate(180%) blur(20px);
+    }
+    
+    .sidebar-item {
+      @apply flex items-center gap-3 px-4 py-2.5 rounded-xl transition-all duration-200 cursor-pointer text-apple-gray-400 hover:bg-apple-gray-100 hover:text-apple-gray-500 font-medium;
+    }
+    
+    .sidebar-item.active {
+      @apply bg-apple-gray-100 text-apple-gray-500 shadow-sm;
+    }
+
+    body {
+      background-color: #FBFBFD;
+      color: #1D1D1F;
+    }
+    
+    .card {
+      @apply bg-white border border-apple-gray-100 rounded-3xl p-6 transition-all duration-300 hover:shadow-[0_8px_30px_rgb(0,0,0,0.04)] hover:-translate-y-1;
+    }
+
+    .btn-primary {
+      @apply bg-apple-gray-500 text-white px-5 py-2.5 rounded-full font-medium transition-all duration-200 hover:bg-opacity-90 active:scale-95;
+    }
+    
+    /* Animation for initial load */
+    @keyframes fadeInUp {
+      from { opacity: 0; transform: translateY(10px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    .fade-in {
+      animation: fadeInUp 0.5s ease-out forwards;
+    }
+  </style>
+  <link rel="canonical" href="https://www.krishnaglasshouse.com/partner/">
+
+  <meta property="og:site_name" content="Krishna Glass House">
+  <meta name="twitter:card" content="summary_large_image">
+  <meta name="robots" content="index, follow">
+  <meta name="author" content="Krishna Glass House">
+</head>
+<body class="antialiased selection:bg-apple-blue selection:text-white">
+  <!-- Layout Wrapper -->
+  <div class="flex min-h-screen">
+    
+    <!-- Sidebar -->
+    <aside id="sidebar" class="fixed inset-y-0 left-0 z-50 w-72 bg-white border-r border-apple-gray-100 transform -translate-x-full transition-transform duration-300 ease-in-out lg:translate-x-0">
+      <div class="p-8 flex flex-col h-full">
+        <!-- Logo -->
+        <div class="mb-10 flex items-center gap-2">
+          <img src="assets/logo-nobg.png" alt="Explyra Logo" class="h-8 transition-opacity duration-300 hover:opacity-80">
+          <!-- Fallback text if image not found -->
+          <span class="text-xl font-bold tracking-tight text-apple-gray-500">Explyra</span>
+        </div>
+        
+        <!-- Navigation -->
+        <nav class="flex-1 space-y-1.5 focus:outline-none" aria-label="Main Navigation">
+          <div class="sidebar-item active" data-lucide-icon="layout-dashboard">
+            <i data-lucide="layout-dashboard" class="w-5 h-5"></i>
+            <span>Dashboard Overview</span>
+          </div>
+          <div class="sidebar-item" data-lucide-icon="user-plus">
+            <i data-lucide="user-plus" class="w-5 h-5"></i>
+            <a href="onboarding.html" class="w-full">Partner Onboarding</a>
+          </div>
+          <div class="sidebar-item" data-lucide-icon="library">
+            <i data-lucide="library" class="w-5 h-5"></i>
+            <a href="resources.html" class="w-full">Resource Vault</a>
+          </div>
+          <div class="sidebar-item" data-lucide-icon="credit-card">
+            <i data-lucide="credit-card" class="w-5 h-5"></i>
+            <span>Payout Details</span>
+          </div>
+          <div class="sidebar-item" data-lucide-icon="settings">
+            <i data-lucide="settings" class="w-5 h-5"></i>
+            <span>Account Settings</span>
+          </div>
+        </nav>
+        
+        <!-- User Section (Bottom) -->
+        <div class="mt-auto pt-6 border-t border-apple-gray-100 flex items-center gap-3">
+          <div class="w-10 h-10 rounded-full bg-apple-gray-100 flex items-center justify-center text-apple-gray-400">
+            <i data-lucide="user" class="w-6 h-6"></i>
+          </div>
+          <div class="flex-1 min-w-0">
+            <p class="text-sm font-semibold truncate leading-tight">Partner Account</p>
+            <p class="text-xs text-apple-gray-400 truncate leading-tight">partner@explyra.me</p>
+          </div>
+          <button class="p-2 hover:bg-apple-gray-100 rounded-lg text-apple-gray-400">
+            <i data-lucide="log-out" class="w-5 h-5"></i>
+          </button>
+        </div>
+      </div>
+    </aside>
+
+    <!-- Main Content -->
+    <main class="flex-1 lg:ml-72 min-h-screen">
+      <!-- Navbar -->
+      <nav class="sticky top-0 z-40 glass border-b border-apple-gray-100 px-6 py-4 flex items-center justify-between">
+        <div class="flex items-center gap-4 lg:hidden">
+          <button id="sidebarToggle" class="p-2 -ml-2 hover:bg-apple-gray-100 rounded-lg text-apple-gray-500">
+            <i data-lucide="menu" class="w-6 h-6"></i>
+          </button>
+          <img src="assets/logo-nobg.png" alt="Explyra" class="h-6">
+        </div>
+        
+        <h1 class="text-xl font-semibold hidden lg:block tracking-tight">Performance Overview</h1>
+        
+        <div class="flex items-center gap-4">
+          <div class="relative hidden sm:block">
+            <i data-lucide="search" class="absolute left-3 top-1/2 -translate-y-1/2 w-4 h-4 text-apple-gray-300"></i>
+            <input type="text" placeholder="Search resources..." 
+                   class="bg-apple-gray-100 border-none rounded-full pl-10 pr-4 py-2 w-64 text-sm focus:ring-2 focus:ring-apple-blue/20 transition-all outline-none">
+          </div>
+          <button class="relative p-2 hover:bg-apple-gray-100 rounded-full text-apple-gray-500">
+            <i data-lucide="bell" class="w-5 h-5"></i>
+            <span class="absolute top-2 right-2 w-2 h-2 bg-red-500 rounded-full border-2 border-white"></span>
+          </button>
+        </div>
+      </nav>
+
+      <!-- Dashboard Body -->
+      <div class="p-6 lg:p-10 max-w-7xl mx-auto space-y-10">
+        
+        <!-- Welcome Header -->
+        <header class="fade-in space-y-1">
+          <p class="text-apple-blue font-semibold text-sm tracking-wider uppercase">Welcome back</p>
+          <h2 class="text-4xl font-bold tracking-tight">Analytics Dashboard</h2>
+        </header>
+
+        <!-- Stats Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+          <div class="card fade-in" style="animation-delay: 0.1s">
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-2 bg-blue-50 text-blue-600 rounded-xl"><i data-lucide="trending-up" class="w-6 h-6"></i></span>
+              <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+12.5%</span>
+            </div>
+            <p class="text-apple-gray-400 text-sm font-medium">Total Referrals</p>
+            <h3 class="text-3xl font-bold mt-1">1,284</h3>
+          </div>
+          
+          <div class="card fade-in" style="animation-delay: 0.2s">
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-2 bg-purple-50 text-purple-600 rounded-xl"><i data-lucide="dollar-sign" class="w-6 h-6"></i></span>
+              <span class="text-xs font-semibold text-green-600 bg-green-50 px-2 py-1 rounded-full">+$240</span>
+            </div>
+            <p class="text-apple-gray-400 text-sm font-medium">Total Earned</p>
+            <h3 class="text-3xl font-bold mt-1">$42,500</h3>
+          </div>
+          
+          <div class="card fade-in" style="animation-delay: 0.3s">
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-2 bg-orange-50 text-orange-600 rounded-xl"><i data-lucide="activity" class="w-6 h-6"></i></span>
+              <span class="text-xs font-semibold text-orange-600 bg-orange-50 px-2 py-1 rounded-full">Active</span>
+            </div>
+            <p class="text-apple-gray-400 text-sm font-medium">Conversion Rate</p>
+            <h3 class="text-3xl font-bold mt-1">4.2%</h3>
+          </div>
+          
+          <div class="card fade-in" style="animation-delay: 0.4s">
+            <div class="flex items-center justify-between mb-4">
+              <span class="p-2 bg-green-50 text-green-600 rounded-xl"><i data-lucide="clock" class="w-6 h-6"></i></span>
+            </div>
+            <p class="text-apple-gray-400 text-sm font-medium">Payout Pendency</p>
+            <h3 class="text-3xl font-bold mt-1">2 Days</h3>
+          </div>
+        </div>
+
+        <!-- Main Chart/Table Section -->
+        <div class="grid grid-cols-1 lg:grid-cols-3 gap-8">
+          <!-- Recent Activity -->
+          <div class="lg:col-span-2 card fade-in" style="animation-delay: 0.5s">
+            <div class="flex items-center justify-between mb-6">
+              <h4 class="text-xl font-bold">Recent Leads</h4>
+              <button class="text-apple-blue font-medium hover:underline text-sm">View Archive</button>
+            </div>
+            <div class="overflow-x-auto">
+              <table class="w-full text-left">
+                <thead>
+                  <tr class="text-apple-gray-300 text-sm font-medium border-b border-apple-gray-100">
+                    <th class="pb-3 pr-4">Partner Name</th>
+                    <th class="pb-3 px-4">Service</th>
+                    <th class="pb-3 px-4">Status</th>
+                    <th class="pb-3 pl-4">Date</th>
+                  </tr>
+                </thead>
+                <tbody class="divide-y divide-apple-gray-50">
+                  <tr class="hover:bg-apple-gray-50 transition-colors">
+                    <td class="py-4 pr-4 font-medium italic">Nexus Ventures</td>
+                    <td class="py-4 px-4 text-apple-gray-400">Glass Facades</td>
+                    <td class="py-4 px-4"><span class="px-2 py-1 rounded-full bg-blue-50 text-blue-600 text-xs font-semibold">In Progress</span></td>
+                    <td class="py-4 pl-4 text-apple-gray-400">Oct 24, 2024</td>
+                  </tr>
+                  <tr class="hover:bg-apple-gray-50 transition-colors">
+                    <td class="py-4 pr-4 font-medium italic">Zest Logistics</td>
+                    <td class="py-4 px-4 text-apple-gray-400">Office Partitions</td>
+                    <td class="py-4 px-4"><span class="px-2 py-1 rounded-full bg-green-50 text-green-600 text-xs font-semibold">Completed</span></td>
+                    <td class="py-4 pl-4 text-apple-gray-400">Oct 22, 2024</td>
+                  </tr>
+                  <tr class="hover:bg-apple-gray-50 transition-colors">
+                    <td class="py-4 pr-4 font-medium italic">Skyline Builders</td>
+                    <td class="py-4 px-4 text-apple-gray-400">uPVC Systems</td>
+                    <td class="py-4 px-4"><span class="px-2 py-1 rounded-full bg-red-50 text-red-600 text-xs font-semibold">Cancelled</span></td>
+                    <td class="py-4 pl-4 text-apple-gray-400">Oct 20, 2024</td>
+                  </tr>
+                </tbody>
+              </table>
+            </div>
+          </div>
+
+          <!-- Quick Actions / Resources -->
+          <div class="card fade-in flex flex-col justify-between" style="animation-delay: 0.6s">
+            <div>
+              <h4 class="text-xl font-bold mb-6">Quick Links</h4>
+              <ul class="space-y-4">
+                <li>
+                  <a href="onboarding.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-apple-gray-50 transition-all group">
+                    <span class="p-2 bg-blue-50 text-blue-600 rounded-xl group-hover:bg-blue-100"><i data-lucide="plus" class="w-5 h-5"></i></span>
+                    <div>
+                      <p class="font-semibold text-sm">Add New Lead</p>
+                      <p class="text-xs text-apple-gray-400">Submit a new project inquiry</p>
+                    </div>
+                  </a>
+                </li>
+                <li>
+                  <a href="resources.html" class="flex items-center gap-3 p-3 rounded-2xl hover:bg-apple-gray-50 transition-all group">
+                    <span class="p-2 bg-purple-50 text-purple-600 rounded-xl group-hover:bg-purple-100"><i data-lucide="file-text" class="w-5 h-5"></i></span>
+                    <div>
+                      <p class="font-semibold text-sm">Pricing Catalog</p>
+                      <p class="text-xs text-apple-gray-400">Download latest price lists</p>
+                    </div>
+                  </a>
+                </li>
+              </ul>
+            </div>
+            
+            <div class="mt-8 p-4 bg-apple-gray-50 rounded-2xl">
+              <p class="text-sm font-semibold mb-1">Help & Support</p>
+              <p class="text-xs text-apple-gray-400 mb-3">Need assistance with your account?</p>
+              <button class="w-full bg-white border border-apple-gray-100 text-sm font-semibold py-2 rounded-xl hover:bg-white/80">Chat with us</button>
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </main>
+  </div>
+
+  <script>
+    // Initialize Lucide icons
+    lucide.createIcons();
+
+    // Responsive Sidebar Toggle
+    const sidebar = document.getElementById('sidebar');
+    const toggle = document.getElementById('sidebarToggle');
+    
+    toggle.addEventListener('click', () => {
+      sidebar.classList.toggle('-translate-x-full');
+    });
+
+    // Close sidebar on click outside on mobile
+    document.addEventListener('mousedown', (e) => {
+      if (window.innerWidth < 1024 && !sidebar.contains(e.target) && !toggle.contains(e.target)) {
+        sidebar.classList.add('-translate-x-full');
+      }
+    });
+
+    // Simple Authentication Check (Simulation for current task requirement)
+    // Note: In real setup, this would check a token in localStorage or cookie
+    const isAuth = localStorage.getItem('partner_auth') === 'true' || false;
+    
+    // Check if current path requires auth (e.g., dashboard)
+    if (!isAuth && !window.location.pathname.includes('login.html')) {
+        // Redirection logic specifically isolation-aware
+        // console.log("Redirecting to login...");
+        // window.location.href = 'login.html';
+    }
+  </script>
+</body>
+</html>
