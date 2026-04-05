@@ -2,3 +2,4 @@ User-agent: *
 Allow: /
 
 Sitemap: https://www.krishnaglasshouse.com/sitemap.xml
+Sitemap: https://www.krishnaglasshouse.com/blogs/sitemap.xml

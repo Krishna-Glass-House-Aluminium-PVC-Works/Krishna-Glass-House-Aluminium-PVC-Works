@@ -1,0 +1,26 @@
+name = "kgh-blog-proxy"
+main = "index.js"
+compatibility_date = "2024-09-23"
+
+# ─── Cloud Run URL ─────────────────────────────────────────────────────────────
+# Set via: npx wrangler secret put CLOUD_RUN_URL
+# Or in Cloudflare Dashboard → Workers → Settings → Variables
+
+# ─── Routes ───────────────────────────────────────────────────────────────────
+# These routes intercept /admin and /api/* and forward them to Cloud Run.
+# All other traffic (including /blogs/*) is served by Cloudflare Pages natively.
+# 
+# IMPORTANT: Replace YOUR_ZONE_ID with your actual Cloudflare Zone ID.
+# Find it: Cloudflare Dashboard → krishnaglasshouse.com → Overview → right sidebar.
+#
+# [[routes]]
+# pattern = "krishnaglasshouse.com/admin*"
+# zone_id = "YOUR_ZONE_ID"
+#
+# [[routes]]
+# pattern = "krishnaglasshouse.com/api/*"
+# zone_id = "YOUR_ZONE_ID"
+
+# ─── Dev mode (preview against real Cloud Run) ────────────────────────────────
+[dev]
+port = 8787

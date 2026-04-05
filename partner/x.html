@@ -1,0 +1,588 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Google Cloud - Domain Registry Dossier</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2pdf.js/0.10.1/html2pdf.bundle.min.js"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@300;400;500;700;900&family=Roboto+Mono:wght@400;700&display=swap" rel="stylesheet">
+    <style>
+        body {
+            background-color: #e8eaed; /* Google Cloud Console Background */
+            margin: 0;
+            padding: 20px 0;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            font-family: 'Roboto', sans-serif;
+            overflow-x: hidden;
+        }
+
+        #dossier-content {
+            display: block; /* Removed flex and gap to stop PDF engine confusion */
+            width: 800px;
+        }
+
+        /* Strict Pixel Formatting for Flawless PDF Generation */
+        .a4-page {
+            background-color: #ffffff;
+            position: relative;
+            overflow: hidden; /* CRITICAL: Prevents any content from leaking */
+            width: 800px !important; 
+            height: 1131px !important; /* STRICT HEIGHT */
+            box-sizing: border-box;
+            display: block; /* NO FLEXBOX */
+            box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+            margin: 0 auto 30px auto; /* Bottom gap for screen viewing */
+            padding: 0;
+            border: none;
+            page-break-after: always;
+        }
+
+        /* Google 4-color top bar */
+        .google-top-bar {
+            height: 10px;
+            width: 100%;
+            background: linear-gradient(to right, #4285F4 25%, #EA4335 25%, #EA4335 50%, #FBBC05 50%, #FBBC05 75%, #34A853 75%);
+        }
+
+        .inner-content {
+            padding: 40px 60px;
+            display: block; /* Back to solid block */
+            box-sizing: border-box;
+        }
+
+        .google-logo {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            font-size: 28px;
+            font-weight: 500;
+            color: #5f6368;
+            margin-bottom: 35px;
+            letter-spacing: -0.5px;
+        }
+
+        .google-logo svg {
+            height: 40px;
+        }
+
+        .doc-title {
+            color: #202124;
+            font-size: 36px;
+            font-weight: 700;
+            margin-bottom: 12px;
+            letter-spacing: -1px;
+        }
+
+        .doc-subtitle {
+            color: #1a73e8;
+            font-size: 16px;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            margin-bottom: 8px;
+        }
+
+        .domain-highlight {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 30px;
+            color: #1a73e8;
+            background-color: #e8f0fe;
+            border: 2px solid #aecbfa;
+            padding: 18px 25px;
+            border-radius: 8px;
+            display: inline-block;
+            margin: 20px 0;
+            font-weight: 700;
+            box-shadow: 0 2px 6px rgba(26,115,232,0.15);
+        }
+
+        .details-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 10px;
+            font-size: 15px;
+        }
+        .details-table th, .details-table td {
+            border-bottom: 1px solid #e8eaed;
+            padding: 14px 12px;
+            text-align: left;
+            vertical-align: top;
+        }
+        .details-table th {
+            color: #5f6368;
+            font-weight: 700;
+            width: 35%;
+        }
+        .details-table td {
+            color: #202124;
+            font-weight: 500;
+            line-height: 1.5;
+        }
+
+        .info-card {
+            border: 1px solid #dadce0;
+            border-radius: 12px;
+            padding: 22px;
+            margin-bottom: 20px;
+            background-color: #ffffff;
+            box-shadow: 0 1px 3px rgba(0,0,0,0.04);
+            flex-shrink: 0;
+        }
+        
+        .info-card-title {
+            color: #1a73e8;
+            font-size: 18px;
+            font-weight: 700;
+            margin-bottom: 16px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            border-bottom: 2px solid #e8eaed;
+            padding-bottom: 8px;
+        }
+
+        /* Fixed Raw Text Logic: Strict Absolute Height */
+        .raw-text {
+            font-family: 'Roboto Mono', monospace;
+            font-size: 11px;
+            white-space: pre-wrap;
+            background-color: #202124;
+            color: #81c995;
+            padding: 25px;
+            border-radius: 8px;
+            height: 620px; /* EXACT HEIGHT, NO FLEX-GROW */
+            margin-bottom: 20px;
+            overflow: hidden;
+            word-break: break-all;
+            box-shadow: inset 0 4px 6px rgba(0,0,0,0.3);
+            border-left: 4px solid #34A853;
+            line-height: 1.6;
+        }
+
+        /* Old-School Absolute Footer - The Only Way PDF Engine Understands */
+        .footer-container {
+            position: absolute; /* Lock it to the absolute bottom of the page */
+            bottom: 40px;
+            left: 60px;
+            right: 60px;
+            border-top: 2px solid #dadce0;
+            padding-top: 15px;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-end;
+            background-color: #ffffff;
+        }
+
+        .badge {
+            display: flex;
+            flex-direction: column;
+            align-items: flex-end;
+            background-color: #f8f9fa;
+            padding: 10px 15px;
+            border-radius: 6px;
+            border: 1px solid #e8eaed;
+        }
+        .badge-title {
+            font-size: 11px;
+            color: #5f6368;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            font-weight: 700;
+        }
+        .badge-value {
+            font-size: 18px;
+            color: #1a73e8;
+            font-weight: 900;
+            display: flex;
+            align-items: center;
+            gap: 6px;
+            margin-top: 2px;
+        }
+
+        .disclaimer {
+            font-size: 11px;
+            color: #5f6368;
+            line-height: 1.5;
+            max-width: 65%;
+            font-weight: 400;
+        }
+
+        /* Screen Preview Scaling */
+        #preview-wrapper {
+            transform: scale(min(1, calc(100vw / 850)));
+            transform-origin: top center;
+            margin-bottom: -100px;
+        }
+
+        /* Removes gaps exactly when PDF is painting */
+        .pdf-generating .a4-page {
+            box-shadow: none !important;
+            margin-bottom: 0 !important; 
+        }
+    </style>
+</head>
+<body>
+
+    <!-- Download Control Panel -->
+    <div class="bg-white p-6 rounded-xl shadow-md w-full max-w-3xl mb-8 z-10 flex justify-between items-center border-t-4" style="border-color: #1a73e8;">
+        <div class="flex items-center gap-4">
+            <svg class="w-12 h-12" viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                <path d="M228.6 156.4L208.2 191.7C236.4 191.7 261 206.1 274.6 228.5L295 193.2C274.9 170.3 252.7 156.4 228.6 156.4Z" fill="#EA4335"/>
+                <path d="M305 245.9L325.4 210.6C291.6 191.2 263.1 204.6 263.1 204.6L283.5 239.9C283.5 239.9 299.7 236.8 305 245.9Z" fill="#FBBC05"/>
+                <path d="M331 291H371.8C371.8 243.6 345.3 202.4 307.7 180.7L287.3 216C313.4 231.1 331 259 331 291Z" fill="#34A853"/>
+                <path d="M256 122C192.4 122 136.9 157.1 108.5 208.5L143.8 228.9C163.5 193.3 206.4 162.8 256 162.8C265 162.8 273.7 163.9 282.2 165.8L302.6 130.5C287.7 125 272.2 122 256 122Z" fill="#4285F4"/>
+                <path d="M96 291H141C141 247.9 157.2 208.5 184.2 178.6L148.9 158.2C116 194.2 96 240.3 96 291Z" fill="#4285F4"/>
+                <path d="M256 381C194.4 381 141 342.3 141 291H96C96 363.6 167.6 422 256 422C344.4 422 416 363.6 416 291H371C371 342.3 317.6 381 256 381Z" fill="#4285F4"/>
+            </svg>
+            <div>
+                <h1 class="text-2xl font-black text-gray-800 font-sans tracking-tight">Google Cloud Registry</h1>
+                <p class="text-gray-600 text-sm mt-1">Target: <span class="font-mono font-bold text-[#1a73e8] bg-blue-50 px-2 py-1 rounded">KRISHNAGLASSHOUSE.COM</span></p>
+            </div>
+        </div>
+        <button onclick="downloadPDF()" class="bg-[#1a73e8] hover:bg-blue-800 text-white font-bold py-3 px-6 rounded-lg shadow-lg transition duration-200 flex items-center gap-2 text-lg">
+            <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg>
+            Export Dossier
+        </button>
+    </div>
+
+    <!-- Hidden Wrapper for PDF Generation -->
+    <div id="preview-wrapper">
+        <div id="dossier-content">
+            
+            <!-- ================= PAGE 1: DEED OF REGISTRATION ================= -->
+            <div class="a4-page">
+                <div class="google-top-bar"></div>
+                <div class="inner-content">
+                    
+                    <div class="google-logo">
+                        <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M228.6 156.4L208.2 191.7C236.4 191.7 261 206.1 274.6 228.5L295 193.2C274.9 170.3 252.7 156.4 228.6 156.4Z" fill="#EA4335"/>
+                            <path d="M305 245.9L325.4 210.6C291.6 191.2 263.1 204.6 263.1 204.6L283.5 239.9C283.5 239.9 299.7 236.8 305 245.9Z" fill="#FBBC05"/>
+                            <path d="M331 291H371.8C371.8 243.6 345.3 202.4 307.7 180.7L287.3 216C313.4 231.1 331 259 331 291Z" fill="#34A853"/>
+                            <path d="M256 122C192.4 122 136.9 157.1 108.5 208.5L143.8 228.9C163.5 193.3 206.4 162.8 256 162.8C265 162.8 273.7 163.9 282.2 165.8L302.6 130.5C287.7 125 272.2 122 256 122Z" fill="#4285F4"/>
+                            <path d="M96 291H141C141 247.9 157.2 208.5 184.2 178.6L148.9 158.2C116 194.2 96 240.3 96 291Z" fill="#4285F4"/>
+                            <path d="M256 381C194.4 381 141 342.3 141 291H96C96 363.6 167.6 422 256 422C344.4 422 416 363.6 416 291H371C371 342.3 317.6 381 256 381Z" fill="#4285F4"/>
+                        </svg>
+                        <span style="font-family: 'Roboto', sans-serif; font-weight: 500;">Google Cloud</span>
+                    </div>
+
+                    <div style="margin-top: 10px;">
+                        <p class="doc-subtitle">Official Public Record</p>
+                        <h1 class="doc-title">Domain Registration Certificate</h1>
+                        
+                        <p style="color: #3c4043; font-size: 16px; margin-top: 30px; line-height: 1.6; font-weight: 400;">
+                            This document serves as an authorized transcript from the global ICANN registry infrastructure, confirming the legal allocation and technical deployment of the following internet property:
+                        </p>
+                        
+                        <div style="text-align: center;">
+                            <div class="domain-highlight">KRISHNAGLASSHOUSE.COM</div>
+                        </div>
+
+                        <p style="color: #3c4043; font-size: 16px; margin-bottom: 25px; line-height: 1.6;">
+                            Administrative and proprietary management of this digital asset has been officially designated to the registrant detailed below:
+                        </p>
+
+                        <div class="info-card" style="background-color: #f8f9fa; border-left: 6px solid #1a73e8;">
+                            <h2 style="font-size: 28px; color: #202124; margin: 0 0 8px 0; font-weight: 900;">Saksham Bhasin</h2>
+                            <p style="color: #1a73e8; margin: 0; font-size: 15px; font-weight: 700;">Authorized Registrant & Manager</p>
+                        </div>
+
+                        <table class="details-table" style="margin-top: 35px;">
+                            <tr>
+                                <th>Deployment Date (UTC)</th>
+                                <td>April 5, 2026</td>
+                            </tr>
+                            <tr>
+                                <th>Lease Expiration (UTC)</th>
+                                <td>April 5, 2027</td>
+                            </tr>
+                            <tr>
+                                <th>Sponsoring Registrar</th>
+                                <td>Squarespace Domains II LLC</td>
+                            </tr>
+                            <tr>
+                                <th>Network Status</th>
+                                <td><span style="color: #1e8e3e; font-weight: 700; background-color: #e6f4ea; padding: 4px 10px; border-radius: 4px;">● Active / Secure</span></td>
+                            </tr>
+                        </table>
+                    </div>
+
+                    <!-- FOOTER IS NOW PUSHED TO BOTTOM DYNAMICALLY via margin-top: auto -->
+                    <div class="footer-container">
+                        <div class="disclaimer">
+                            <strong>CONFIDENTIAL & VERIFIED</strong><br>
+                            © 2026 Google Cloud Platform. Data retrieved via ICANN RDAP protocols.<br>
+                            This is an automated system transcript and does not supersede local cyber laws.<br>
+                            To report discrepancies, visit <strong>cloud.google.com/support</strong>.
+                        </div>
+                        <div class="badge">
+                            <span class="badge-title">Authentication</span>
+                            <span class="badge-value">
+                                <svg style="width:20px; height:20px; color:#1a73e8;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                GCP VERIFIED
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PAGE 2: TECHNICAL INFRASTRUCTURE ================= -->
+            <div class="a4-page">
+                <div class="google-top-bar"></div>
+                <div class="inner-content">
+                    
+                    <div class="google-logo">
+                        <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M228.6 156.4L208.2 191.7C236.4 191.7 261 206.1 274.6 228.5L295 193.2C274.9 170.3 252.7 156.4 228.6 156.4Z" fill="#EA4335"/>
+                            <path d="M305 245.9L325.4 210.6C291.6 191.2 263.1 204.6 263.1 204.6L283.5 239.9C283.5 239.9 299.7 236.8 305 245.9Z" fill="#FBBC05"/>
+                            <path d="M331 291H371.8C371.8 243.6 345.3 202.4 307.7 180.7L287.3 216C313.4 231.1 331 259 331 291Z" fill="#34A853"/>
+                            <path d="M256 122C192.4 122 136.9 157.1 108.5 208.5L143.8 228.9C163.5 193.3 206.4 162.8 256 162.8C265 162.8 273.7 163.9 282.2 165.8L302.6 130.5C287.7 125 272.2 122 256 122Z" fill="#4285F4"/>
+                            <path d="M96 291H141C141 247.9 157.2 208.5 184.2 178.6L148.9 158.2C116 194.2 96 240.3 96 291Z" fill="#4285F4"/>
+                            <path d="M256 381C194.4 381 141 342.3 141 291H96C96 363.6 167.6 422 256 422C344.4 422 416 363.6 416 291H371C371 342.3 317.6 381 256 381Z" fill="#4285F4"/>
+                        </svg>
+                        <span style="font-family: 'Roboto', sans-serif; font-weight: 500;">Google Cloud</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px;">
+                        <h2 class="doc-title" style="font-size: 28px;">Schedule A: Technical Architecture</h2>
+                        <span style="color: #1a73e8; font-family: 'Roboto Mono', monospace; font-size: 14px; font-weight: 700; background: #e8f0fe; padding: 4px 10px; border-radius: 4px;">PAGE 02</span>
+                    </div>
+
+                    <p style="color: #3c4043; font-size: 15px; margin-bottom: 30px; line-height: 1.5;">
+                        The following parameters outline the authoritative routing, DNS delegation, and security locks actively registered for the designated domain asset.
+                    </p>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <svg style="width:24px; height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M21 12a9 9 0 01-9 9m9-9a9 9 0 00-9-9m9 9H3m9 9a9 9 0 01-9-9m9 9c1.657 0 3-4.03 3-9s-1.343-9-3-9m0 18c-1.657 0-3-4.03-3-9s1.343-9 3-9m-9 9a9 9 0 019-9"></path></svg>
+                            DNS Root Servers (Nameservers)
+                        </div>
+                        <table class="details-table" style="margin-top: 0;">
+                            <tr><th>Primary Nameserver</th><td><span style="font-family: 'Roboto Mono', monospace; font-weight: 700; color: #1a73e8;">CLAY.NS.CLOUDFLARE.COM</span></td></tr>
+                            <tr><th>Secondary Nameserver</th><td><span style="font-family: 'Roboto Mono', monospace; font-weight: 700; color: #1a73e8;">SIERRA.NS.CLOUDFLARE.COM</span></td></tr>
+                            <tr><th>DNSSEC</th><td>Unsigned</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <svg style="width:24px; height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 15v2m-6 4h12a2 2 0 002-2v-6a2 2 0 00-2-2H6a2 2 0 00-2 2v6a2 2 0 002 2zm10-10V7a4 4 0 00-8 0v4h8z"></path></svg>
+                            Domain Security Status
+                        </div>
+                        <table class="details-table" style="margin-top: 0;">
+                            <tr><th>EPP Status Code</th><td><span style="color: #d93025; font-weight: 700;">clientDeleteProhibited</span></td></tr>
+                            <tr><th>EPP Status Code</th><td><span style="color: #d93025; font-weight: 700;">clientTransferProhibited</span></td></tr>
+                        </table>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <svg style="width:24px; height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 17v-2m3 2v-4m3 4v-6m2 10H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z"></path></svg>
+                            Registry Metrics
+                        </div>
+                        <table class="details-table" style="margin-top: 0;">
+                            <tr><th>Registry Domain ID</th><td><span style="font-family: 'Roboto Mono', monospace;">3084649892_DOMAIN_COM-VRSN</span></td></tr>
+                            <tr><th>Registrar IANA ID</th><td>895</td></tr>
+                            <tr><th>Creation Timestamp</th><td>2026-04-05 18:14:46 UTC</td></tr>
+                            <tr><th>Last Update Timestamp</th><td>2026-04-05 18:14:48 UTC</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="footer-container">
+                        <div class="disclaimer">
+                            <strong>CONFIDENTIAL & VERIFIED</strong><br>
+                            © 2026 Google Cloud Platform. Data retrieved via ICANN RDAP protocols.
+                        </div>
+                        <div class="badge">
+                            <span class="badge-title">Authentication</span>
+                            <span class="badge-value">
+                                <svg style="width:20px; height:20px; color:#1a73e8;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                GCP VERIFIED
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PAGE 3: ADMINISTRATIVE CONTACTS ================= -->
+            <div class="a4-page">
+                <div class="google-top-bar"></div>
+                <div class="inner-content">
+                    
+                    <div class="google-logo">
+                        <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M228.6 156.4L208.2 191.7C236.4 191.7 261 206.1 274.6 228.5L295 193.2C274.9 170.3 252.7 156.4 228.6 156.4Z" fill="#EA4335"/>
+                            <path d="M305 245.9L325.4 210.6C291.6 191.2 263.1 204.6 263.1 204.6L283.5 239.9C283.5 239.9 299.7 236.8 305 245.9Z" fill="#FBBC05"/>
+                            <path d="M331 291H371.8C371.8 243.6 345.3 202.4 307.7 180.7L287.3 216C313.4 231.1 331 259 331 291Z" fill="#34A853"/>
+                            <path d="M256 122C192.4 122 136.9 157.1 108.5 208.5L143.8 228.9C163.5 193.3 206.4 162.8 256 162.8C265 162.8 273.7 163.9 282.2 165.8L302.6 130.5C287.7 125 272.2 122 256 122Z" fill="#4285F4"/>
+                            <path d="M96 291H141C141 247.9 157.2 208.5 184.2 178.6L148.9 158.2C116 194.2 96 240.3 96 291Z" fill="#4285F4"/>
+                            <path d="M256 381C194.4 381 141 342.3 141 291H96C96 363.6 167.6 422 256 422C344.4 422 416 363.6 416 291H371C371 342.3 317.6 381 256 381Z" fill="#4285F4"/>
+                        </svg>
+                        <span style="font-family: 'Roboto', sans-serif; font-weight: 500;">Google Cloud</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 25px;">
+                        <h2 class="doc-title" style="font-size: 28px;">Schedule B: Administrative Records</h2>
+                        <span style="color: #1a73e8; font-family: 'Roboto Mono', monospace; font-size: 14px; font-weight: 700; background: #e8f0fe; padding: 4px 10px; border-radius: 4px;">PAGE 03</span>
+                    </div>
+
+                    <p style="color: #3c4043; font-size: 15px; margin-bottom: 30px; line-height: 1.5;">
+                        Extracted administrative, physical location, and communication details bound to the legal entity owning the domain.
+                    </p>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <svg style="width:24px; height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z"></path></svg>
+                            Registrant Profile Details
+                        </div>
+                        <table class="details-table" style="margin-top: 0;">
+                            <tr><th>Database Handle ID</th><td><span style="font-family: 'Roboto Mono', monospace; font-size: 13px; font-weight: 700; color: #1a73e8;">SQSP_CONTACT_daf4762c-5e48-4dd8-958f-67a06a80fccc</span></td></tr>
+                            <tr><th>Legal Name</th><td><span style="font-weight: 900; font-size: 16px;">Saksham Bhasin</span></td></tr>
+                            <tr><th>Organization</th><td>Krishna Glass House Aluminium & PVC Works</td></tr>
+                            <tr><th>Physical Address</th><td>Shop No. 2, Mohan Nagar, Pankha Road, Opp. D-Block, Janakpuri</td></tr>
+                            <tr><th>City & State</th><td>New Delhi, Delhi</td></tr>
+                            <tr><th>Postal Code</th><td>110046</td></tr>
+                            <tr><th>Country</th><td>India (IN)</td></tr>
+                        </table>
+                    </div>
+
+                    <div class="info-card">
+                        <div class="info-card-title">
+                            <svg style="width:24px; height:24px;" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M3 8l7.89 5.26a2 2 0 002.22 0L21 8M5 19h14a2 2 0 002-2V7a2 2 0 00-2-2H5a2 2 0 00-2 2v10a2 2 0 002 2z"></path></svg>
+                            Communication Channels
+                        </div>
+                        <table class="details-table" style="margin-top: 0;">
+                            <tr><th>Primary Phone</th><td><span style="font-weight: 700;">+91.8700162623</span></td></tr>
+                            <tr><th>Primary Fax</th><td><span style="font-weight: 700;">+1.8087363329</span></td></tr>
+                            <tr><th>Registered Email</th><td><span style="color: #1a73e8; font-weight: 700;">info@krishnaglass.explyra.me</span></td></tr>
+                        </table>
+                    </div>
+
+                    <div class="footer-container">
+                        <div class="disclaimer">
+                            <strong>CONFIDENTIAL & VERIFIED</strong><br>
+                            © 2026 Google Cloud Platform. Data retrieved via ICANN RDAP protocols.
+                        </div>
+                        <div class="badge">
+                            <span class="badge-title">Authentication</span>
+                            <span class="badge-value">
+                                <svg style="width:20px; height:20px; color:#1a73e8;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                GCP VERIFIED
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- ================= PAGE 4: RAW ANNEXURE ================= -->
+            <div class="a4-page">
+                <div class="google-top-bar"></div>
+                <div class="inner-content">
+                    
+                    <div class="google-logo">
+                        <svg viewBox="0 0 512 512" fill="none" xmlns="http://www.w3.org/2000/svg">
+                            <path d="M228.6 156.4L208.2 191.7C236.4 191.7 261 206.1 274.6 228.5L295 193.2C274.9 170.3 252.7 156.4 228.6 156.4Z" fill="#EA4335"/>
+                            <path d="M305 245.9L325.4 210.6C291.6 191.2 263.1 204.6 263.1 204.6L283.5 239.9C283.5 239.9 299.7 236.8 305 245.9Z" fill="#FBBC05"/>
+                            <path d="M331 291H371.8C371.8 243.6 345.3 202.4 307.7 180.7L287.3 216C313.4 231.1 331 259 331 291Z" fill="#34A853"/>
+                            <path d="M256 122C192.4 122 136.9 157.1 108.5 208.5L143.8 228.9C163.5 193.3 206.4 162.8 256 162.8C265 162.8 273.7 163.9 282.2 165.8L302.6 130.5C287.7 125 272.2 122 256 122Z" fill="#4285F4"/>
+                            <path d="M96 291H141C141 247.9 157.2 208.5 184.2 178.6L148.9 158.2C116 194.2 96 240.3 96 291Z" fill="#4285F4"/>
+                            <path d="M256 381C194.4 381 141 342.3 141 291H96C96 363.6 167.6 422 256 422C344.4 422 416 363.6 416 291H371C371 342.3 317.6 381 256 381Z" fill="#4285F4"/>
+                        </svg>
+                        <span style="font-family: 'Roboto', sans-serif; font-weight: 500;">Google Cloud</span>
+                    </div>
+
+                    <div style="display: flex; justify-content: space-between; align-items: baseline; margin-bottom: 20px;">
+                        <h2 class="doc-title" style="font-size: 28px;">Annexure: Cloud Registry Log</h2>
+                        <span style="color: #1a73e8; font-family: 'Roboto Mono', monospace; font-size: 14px; font-weight: 700; background: #e8f0fe; padding: 4px 10px; border-radius: 4px;">PAGE 04</span>
+                    </div>
+                        
+                    <p style="color: #3c4043; font-size: 15px; margin-bottom: 20px; line-height: 1.5;">
+                        Unaltered raw output from the global ICANN WHOIS database query. Encrypted transmission log.
+                    </p>
+                        
+                    <div class="raw-text"><span style="color: #9aa0a6;">saksham@google-cloud-shell:~$</span> whois krishnaglasshouse.com
+
+Domain Name: KRISHNAGLASSHOUSE.COM
+Registry Domain ID: 3084649892_DOMAIN_COM-VRSN
+Registrar WHOIS Server: whois.squarespace.domains
+Registrar URL: http://domains.squarespace.com
+Updated Date: 2026-04-05T18:14:48Z
+Creation Date: 2026-04-05T18:14:46Z
+Registry Expiry Date: 2027-04-05T18:14:46Z
+Registrar: Squarespace Domains II LLC
+Registrar IANA ID: 895
+Registrar Abuse Contact Email: abuse-complaints@squarespace.com
+Registrar Abuse Contact Phone: +1.6466935324
+Domain Status: clientDeleteProhibited https://icann.org/epp#clientDeleteProhibited
+Domain Status: clientTransferProhibited https://icann.org/epp#clientTransferProhibited
+Name Server: CLAY.NS.CLOUDFLARE.COM
+Name Server: SIERRA.NS.CLOUDFLARE.COM
+DNSSEC: unsigned
+
+Registrant Handle: SQSP_CONTACT_daf4762c-5e48-4dd8-958f-67a06a80fccc
+Registrant Name: Saksham Bhasin
+Registrant Organization: Krishna Glass House Aluminium & PVC Works
+Registrant Street: Shop No. 2, Mohan Nagar, Pankha Road, Opp. D-Block, Janakpuri
+Registrant City: New Delhi
+Registrant State/Province: Delhi
+Registrant Postal Code: 110046
+Registrant Country: IN
+Registrant Phone: +91.8700162623
+Registrant Fax: +1.8087363329
+Registrant Email: info@krishnaglass.explyra.me
+
+<span style="color: #9aa0a6;">saksham@google-cloud-shell:~$</span> _</div>
+                    
+                    <div class="footer-container">
+                        <div class="disclaimer">
+                            <strong>CONFIDENTIAL & VERIFIED</strong><br>
+                            © 2026 Google Cloud Platform. Data retrieved via ICANN RDAP protocols.
+                        </div>
+                        <div class="badge">
+                            <span class="badge-title">Authentication</span>
+                            <span class="badge-value">
+                                <svg style="width:20px; height:20px; color:#1a73e8;" fill="currentColor" viewBox="0 0 20 20"><path fill-rule="evenodd" d="M6.267 3.455a3.066 3.066 0 001.745-.723 3.066 3.066 0 013.976 0 3.066 3.066 0 001.745.723 3.066 3.066 0 012.812 2.812c.051.643.304 1.254.723 1.745a3.066 3.066 0 010 3.976 3.066 3.066 0 00-.723 1.745 3.066 3.066 0 01-2.812 2.812 3.066 3.066 0 00-1.745.723 3.066 3.066 0 01-3.976 0 3.066 3.066 0 00-1.745-.723 3.066 3.066 0 01-2.812-2.812 3.066 3.066 0 00-.723-1.745 3.066 3.066 0 010-3.976 3.066 3.066 0 00.723-1.745 3.066 3.066 0 012.812-2.812zm7.44 5.252a1 1 0 00-1.414-1.414L9 10.586 7.707 9.293a1 1 0 00-1.414 1.414l2 2a1 1 0 001.414 0l4-4z" clip-rule="evenodd"></path></svg>
+                                GCP VERIFIED
+                            </span>
+                        </div>
+                    </div>
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <script>
+        function downloadPDF() {
+            const container = document.getElementById('dossier-content');
+            const wrapper = document.getElementById('preview-wrapper');
+            const btn = document.querySelector('button');
+            
+            // THE ULTIMATE PDF GAP FIX:
+            document.body.classList.add('pdf-generating'); // Use CSS class to strip margins safely
+            wrapper.style.transform = 'none';
+            
+            btn.innerHTML = "Exporting Document...";
+
+            // Window width trick for html2canvas to ensure absolute pixel match
+            const opt = {
+                margin:       0,
+                filename:     'Google_Cloud_Registry_Krishnaglasshouse.pdf',
+                image:        { type: 'jpeg', quality: 1.0 },
+                html2canvas:  { scale: 2, useCORS: true, windowWidth: 800 }, 
+                jsPDF:        { unit: 'px', format: [800, 1131], orientation: 'portrait' } 
+            };
+            
+            html2pdf().set(opt).from(container).save().then(() => {
+                // Restore UI
+                btn.innerHTML = `<svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24"><path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 16v1a3 3 0 003 3h10a3 3 0 003-3v-1m-4-4l-4 4m0 0l-4-4m4 4V4"></path></svg> Export Dossier`;
+                document.body.classList.remove('pdf-generating');
+                wrapper.style.transform = ''; 
+            });
+        }
+    </script>
+</body>
+</html>

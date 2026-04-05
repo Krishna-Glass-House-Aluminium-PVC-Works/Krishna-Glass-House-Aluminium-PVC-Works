@@ -1,0 +1,19 @@
+{
+  "name": "kgh-blog-backend",
+  "version": "2.0.0",
+  "type": "module",
+  "description": "GitOps blog engine for Krishna Glass House — Vertex AI generates HTML, pushes to GitHub, Cloudflare Pages deploys.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "dev": "node --watch server.js"
+  },
+  "dependencies": {
+    "@google-cloud/vertexai": "^1.9.0",
+    "express": "^4.21.0",
+    "slugify": "^1.6.6"
+  },
+  "engines": {
+    "node": ">=20"
+  }
+}
