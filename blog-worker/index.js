@@ -34,7 +34,7 @@ export default {
  * Proxy a request to the Cloud Run backend.
  */
 async function proxyToCloudRun(request, url, env) {
-  const CLOUD_RUN_URL = env.CLOUD_RUN_URL;
+  const CLOUD_RUN_URL = 'https://kgh-blog-411853553644.us-central1.run.app';
 
   if (!CLOUD_RUN_URL) {
     return new Response('CLOUD_RUN_URL is not configured in Worker environment.', { status: 503 });

@@ -27,7 +27,7 @@ async function generateBlogPost(userTopic = null) {
     Topic: "${topic}"
     Target Audience: Homeowners, Architects, and Interior Designers in Delhi, Gurugram, and Noida.
     Tone: Professional, Authoritative, yet approachable.
-    Model to use: Gemini 2.0 Flash.
+    Model to use: Gemini 2.0 Flash (Response must be high quality).
 
     Structure requirements (Output MUST BE VALID JSON):
     1. Title: Catchy, SEO-rich title.
@@ -48,40 +48,44 @@ async function generateBlogPost(userTopic = null) {
     }
   `;
 
+  let modelResult;
+
   try {
     // Primary: Try Vertex AI (GCP Native)
     console.log('--- Attempting Generation via Vertex AI ---');
     const vertexAI = new VertexAI({ project, location });
-    const model = vertexAI.getGenerativeModel({ 
-      model: 'gemini-2.0-flash-001',
-      generationConfig: { responseMimeType: 'application/json' }
+    const vertexModel = vertexAI.getGenerativeModel({ 
+      model: 'gemini-2.0-flash-001'
     });
 
-    const result = await model.generateContent(prompt);
+    const result = await vertexModel.generateContent(prompt);
     const response = await result.response;
-    const data = JSON.parse(response.candidates[0].content.parts[0].text);
-    return finalizePost(data);
+    modelResult = response.candidates[0].content.parts[0].text;
 
   } catch (error) {
-    console.warn('⚠️ Vertex AI Failed or Not Configured. Using Fallback SDK with API Key...');
+    console.warn('⚠️ Vertex AI Failed. Using Fallback SDK with API Key...');
     
     if (!apiKey) throw new Error('GEMINI_API_KEY is missing for fallback generation.');
 
     const genAI = new GoogleGenerativeAI(apiKey);
-    const model = genAI.getGenerativeModel({ model: 'gemini-1.5-flash' }); // Fallback to 1.5 if 2.0 isn't available in standard SDK region
+    const sdkModel = genAI.getGenerativeModel({ model: 'gemini-2.0-flash' }); 
 
-    const result = await model.generateContent(prompt);
+    const result = await sdkModel.generateContent(prompt);
     const response = await result.response;
-    const text = response.text().replace(/```json/g, '').replace(/```/g, '').trim();
-    const data = JSON.parse(text);
-    return finalizePost(data);
+    modelResult = response.text();
   }
-}
 
-function finalizePost(data) {
-  data.slug = slugify(data.title, { lower: true, strict: true });
-  data.date = new Date().toISOString();
-  return data;
+  // Parse and finalize
+  try {
+    const cleanText = modelResult.replace(/```json/g, '').replace(/```/g, '').trim();
+    const data = JSON.parse(cleanText);
+    data.slug = slugify(data.title, { lower: true, strict: true });
+    data.date = new Date().toISOString();
+    return data;
+  } catch (parseError) {
+    console.error('Failed to parse AI response:', modelResult);
+    throw new Error('AI returned invalid format. Please try again.');
+  }
 }
 
 module.exports = { generateBlogPost };
